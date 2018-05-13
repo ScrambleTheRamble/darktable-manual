@@ -1,0 +1,1772 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<link href="../Styles/Style0001.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<h1>Chapter 2. Lighttable</h1>
+<div>The lighttable is where you manage all your images, ratings, export and much more.<br/></div>
+<p><br/><img alt="lighttable_view" src="../Images/lighttable_view.jpg" class="center"/></p>
+<h2 id="sigil_toc_id_75">2.1. Overview<br/></h2>
+<div>
+<table border="0" width="100%"><colgroup> <col width="70%"/>
+ <col width="30%"/>
+ </colgroup>
+<tbody>
+<tr>
+<td>In the central view, your images are shown as thumbnails, surrounded by a frame. When the mouse is over an image, its rating and color labels are shown in the frame, along with an indicator&nbsp;<img alt="lighttable_thumb_icon_altered" src="../Images/lighttable_thumb_icon_altered.jpg" width="2%"/>&nbsp;of whether the image has already been altered in darkroom. Also, when the mouse hovers over an image frame, image information (EXIF data, metadata) is shown in the <a title="2.3.4. Image information" href="#sigil_toc_id_77"><em>image information</em></a> panel at the bottom left.<br/></td>
+<td>
+<div align="center"><a href="../Images/lighttable_thumb.jpg"><img alt="lighttable_thumb" src="../Images/lighttable_thumb.jpg" width="100%"/></a>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>While the mouse is over an image frame, there are a number of actions you can perform. Here is a table of keyboard shortcuts and assigned actions.</p>
+<div class="informaltable">
+<table class="informaltable" border="0" width="100%"><colgroup><col width="25%"/>
+<col width="75%"/>
+</colgroup>
+<tbody>
+<tr>
+<td><span class="emphasis"><em>0 – 5</em></span></td>
+<td>set the rating of the image; if an image has 1 star and you hit the <span class="emphasis"><em>1</em></span> key, the image will be unrated. Pressing <span class="emphasis"><em>r</em></span> rejects the image.</td>
+</tr>
+<tr>
+<td><span class="emphasis"><em>F1 – F5</em></span></td>
+<td>set a color label</td>
+</tr>
+<tr>
+<td><span class="emphasis"><em>ctrl-c</em></span></td>
+<td>copy the history stack</td>
+</tr>
+<tr>
+<td><span class="emphasis"><em>ctrl-v</em></span></td>
+<td>paste the copied history stack</td>
+</tr>
+<tr>
+<td><span class="emphasis"><em>d</em></span></td>
+<td>open in darkroom view for developing</td>
+</tr>
+<tr>
+<td><span class="emphasis"><em>z</em></span></td>
+<td>fully zoom into the image while the key is pressed</td>
+</tr>
+<tr>
+<td><span class="emphasis"><em>ctrl-z</em></span></td>
+<td>fully zoom into the image and show areas in focus</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div>The overlay button&nbsp;<img alt="general_icon_overlay" src="../Images/general_icon_overlay.jpg" width="2%"/>&nbsp;located in the upper panel activates the permanent display of star ratings and image-changed indicator&nbsp;<img alt="lighttable_thumb_icon_altered" src="../Images/lighttable_thumb_icon_altered.jpg" width="2%"/>&nbsp;on all thumbnails. By default these overlays are only visible on the thumbnail under the mouse cursor. An overlay button is also available in the other views where it affects the filmstrip accordingly (see&nbsp;<a href="../Text/Overview.xhtml#sigil_toc_id_20">Section 1.2.3, “Filmstrip”</a>&nbsp;and&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_76">Section 3.3.9.7, “Filmstrip”</a>).</div>
+<div><br/></div>
+<div>Pressing the&nbsp;<img alt="lighttable_icon_displayprofile" src="../Images/lighttable_icon_displayprofile.jpg" width="2%"/>&nbsp;button on the right side of the bottom panel lets you define the color profile of your monitor. You can either set this to <span class="quote">“<span class="quote">system display profile</span>”</span> (default) and let darktable enquire the system's display profile, or alternatively set it to one of the ICC profiles located in <code class="filename">$DARKTABLE/share/darktable/color/out</code> and<code class="filename">$HOME/.config/darktable/color/out</code>. <code class="filename">$DARKTABLE</code> is used here to represent your chosen darktable installation directory and <code class="filename">$HOME</code> your home directory. For more details on color management see&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_78">Section 3.2.10, “Color management”</a>.</div>
+<div><br/></div>
+<div>In the center of the bottom panel you have an option to choose between zoomable lighttable view or filemanager view of the thumbnails. In zoomable lighttable view, scroll with your mouse wheel to zoom in and out. Moving the mouse while <i>pressing the left mouse button</i> allows you to navigate through your collection. In filemanager view, you can can change the number of images in each row, using the slider next to the filemanager option, or by using <i>ctrl-(mouse wheel)</i>. Use your mouse wheel to navigate through your collection.</div>
+<div><br/></div>
+<div>In both modes you can navigate left/right/up/down through your collection using ←/→/↑/↓. Pressing <i>g</i> in filemanager mode goes to the top, <i>shift-g</i> to the bottom, <i>PageUp</i> brings you one page up and <i>PageDown</i> one page down.</div>
+<div><br/></div>
+<p>You can select the image under the pointer by <span class="emphasis"><em>left-clicking</em></span> on its thumbnail or by pressing <span class="emphasis"><em>return</em></span>. A range of images is selected by <span class="emphasis"><em>clicking</em></span> on the first one and then <span class="emphasis"><em>shift-clicking</em></span> on the last one. Images are added or removed from your selection by <span class="emphasis"><em>ctrl-clicking</em></span> on their thumbnails or pressing <span class="emphasis"><em>space</em></span>.</p>
+<p>To locate where you are in a collection, there are indicators at the extreme borders of the window: left/right for your position when you are in filemanager mode, left/right and top/bottom for your vertical and your horizontal position, respectively, when you are in the zoomable lighttable view.</p>
+<p>While holding down the <span class="emphasis"><em>z</em></span> key a fully zoomed preview of the image under the mouse cursor is displayed. You can use this feature for a quick inspection of image quality while rating and selecting images.</p>
+<p>Holding down the <span class="emphasis"><em>ctlr-z</em></span> key fully zooms into the image and additionally activates an analysis for sharp regions, detecting those parts of the image that are in focus. Areas of high sharpness are indicated by a red border – the higher the color intensity the better the sharpness. In case that no area of <span class="emphasis"><em>high</em></span> sharpness is detected darktable indicates areas of<span class="emphasis"><em>moderate</em></span> sharpness with a blue border. For this tool to work the input image needs to hold an embedded JPEG thumbnail which is the case for most raw files.</p>
+<p>Sometimes pressing <span class="emphasis"><em>z</em></span> or <span class="emphasis"><em>ctrl-z</em></span> may not reveal an immediate effect – in that case please click into the center area and press the corresponding key again.</p>
+<table border="0" width="100%"><colgroup> <col width="70%"/>
+ <col width="30%"/>
+ </colgroup>
+<tbody>
+<tr>
+<td>Fully zoomed-in image view while holding down the <span><em>ctrl-z</em></span>key with indication of the sharp areas in focus. Sharpness detection is based on an embedded JPEG thumbnail of the original raw file independent of any processing steps within darktable.</td>
+<td>
+<div align="center"><a href="../Images/lighttable_focus_detection.jpg"><img alt="lighttable_focus_detection" src="../Images/lighttable_focus_detection.jpg" width="100%"/></a>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div><p> </p>
+<div class="titlepage">
+<div>
+<div>
+<h2 class="title" id="sigil_toc_id_79">2.2. Lighttable concepts</h2>
+</div>
+</div>
+</div>
+<p>This section explains some of the underlying concepts on how darktable organizes images in the lighttable.</p>
+<div class="sect2">
+<div class="titlepage">
+<div>
+<div>
+<h3 class="title" id="sigil_toc_id_80">2.2.1. Film rolls</h3>
+</div>
+</div>
+</div>
+<p>The basic element for organizing images in darktable is called a film roll – a kind of virtual folder. Whenever you import images from disk, the images are organized in a film roll whose name is derived from the name of the disk folder. Re-importing a disk folder will add any new images to the existing film roll; images already present in the film roll are not touched.</p>
+<p>It is important to note that importing images in darktable does not involve a physical copy step. Importing a folder into darktable is therefore <span class="emphasis"><em>not</em></span> a backup operation of that folder.</p>
+<h3 id="sigil_toc_id_81">2.2.2. Collections</h3>
+<p>darktable offers a versatile feature to organize your images according to various user defined selection criteria. A set of images which is defined by a specific combination of selection criteria is called a collection. The most basic kind of collection is a film roll &nbsp;– covering all the images which have been imported from a specific folder on disk.</p>
+<p>You can easily construct other kinds of collections based on various image attributes like Exif data, filename, tags etc. Multiple criteria can be logically combined to narrow or extend your collection (see&nbsp;<a href="#sigil_toc_id_82">Section 2.3.2, “Collect images”</a>).</p>
+<p>darktable keeps a list of the most recently used collections for quick access (see Section&nbsp;<a href="#sigil_toc_id_83">2.3.3, “Recently used collections”</a>).</p>
+<h3 id="sigil_toc_id_84">2.2.3. Thumbnails</h3>
+<p>Each image of the current collection is represented by a thumbnail in the lighttable view. darktable keeps a cache of the last recently used thumbnails in a file on disk and loads it into memory at startup. The size of this cache can be adjusted in the core preferences dialog (see&nbsp;<a href="../Text/preferences.xhtml#sigil_toc_id_5">Section 8.2, “Core options”</a>).</p>
+<h4 id="sigil_toc_id_85">2.2.3.1. Thumbnail creation</h4>
+<p>Thumbnails get created whenever darktable imports an image for the first time, after an image has been modified in the darkroom, or when revisiting an “old” image whose thumbnail is no longer available.</p>
+<p>When darktable imports an image for the first time, there are two possible sources from where to take a thumbnail. darktable can either try to extract an embedded thumbnail out of the input image – most raw files contain these kind of thumbnails generated by the camera – or process the image by itself using default settings. You can define how darktable gets its thumbnails in the GUI preferences dialog (see&nbsp;<a href="../Text/preferences.xhtml#sigil_toc_id_86">Section 8.1, “GUI options”</a>).</p>
+<p>Extracting an embedded thumbnail from the input image has the advantage of being very fast. However, those thumbnails have been generated by the raw converter of the camera and do not represent darktable's “view” of that image. You will notice the difference as soon as you open the image in the darkroom mode, after which darktable replaces the embedded thumbnail with its own one.</p>
+<div class="titlepage">
+<div>
+<div>
+<p>After importing a new film roll darktable generates thumbnails for new images as they are needed. In the case of a larger set of new images this slows down navigation in the lighttable view as with each move new thumbnails might need to be produced. Alternatively you may terminate darktable and start the <code class="filename">darktable-generate-cache</code>binary. This program will generate all missing thumbnails in one go. For more details see&nbsp;<a class="xref" title="1.1.3. darktable-generate-cache binary" href="../Text/Overview.xhtml#sigil_toc_id_6">Section 1.1.3, “<code class="filename">darktable-generate-cache</code> binary”</a>.</p>
+<p>As the thumbnail cache file has a pre-defined maximum size it will eventually get filled up. Then if new thumbnails are added, old ones need to be dropped. However, darktable will keep all thumbnails on disk if the corresponding disk backend option is activated in the core preferences dialog (see <a class="xref" title="8.2. Core options" href="../Text/preferences.xhtml#sigil_toc_id_5">Section 8.2, “Core options”</a>). Access to the thumbnails in this secondary cache is slower than to the ones in the primary cache, but still much faster than reprocessing thumbnails from scratch. The size of the secondary cache is only limited by disk space.</p>
+<p>Thumbnails never get dropped from the secondary cache. In case you want to clean it up you can do so manually by deleting all images recursively in folder<code class="filename">$HOME/.cache/darktable/mipmaps-xyz.d</code> where <code class="filename">xyz</code> denotes an alphanumeric identifier of the cache. Afterwards you let darktable re-generate thumbnails as needed, or you generate all thumbnails in one go with <code class="filename">darktable-generate-cache</code>.</p>
+<p>If you don't activate the disk backend and select a too small cache size you might observe adverse effects. Continuous regeneration of thumbnails whenever you move in your collection, flickering of thumbnail images, or even darktable becoming unresponsive are typical symptoms. A good choice of the cache size is 512MB or higher. Please mind that the inherent limits of <i>32-bit systems</i> will force you to go for a much lower cache size (see&nbsp;<a href="../Text/special_topics.xhtml#sigil_toc_id_87">Section 10.1, “darktable and memory”</a>&nbsp;for more details on these limitations).</p>
+<p>Starting with darktable 2.0 thumbnails are fully color managed if the corresponding option is activated in the core preferences dialog (see&nbsp;<a href="../Text/preferences.xhtml#sigil_toc_id_5">Section 8.2, “Core options”</a>). Colors are rendered accurately on screen as long as your system is properly set up to hand over the right monitor profile to darktable. For more information on color management see&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_78">Section 3.2.10, “Color management”</a>.</p>
+<h4 id="sigil_toc_id_88">2.2.3.2. Skulls<br/></h4>
+<div>
+<table border="0" width="100%"><colgroup> <col width="70%"/>
+ <col width="30%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>
+<p>If for some reason darktable is not able to generate a thumbnail, it displays a skull. Don't panic!</p>
+</td>
+<td>
+<div align="center"><img alt="thumbnails_1" src="../Images/thumbnails_1.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>There are three main reasons for this to happen.<br/></p>
+<p>There are three main reasons for this to happen.</p>
+<p>One possible cause is that the input image has been renamed or physically deleted from disk. darktable remembers all images ever imported, as long as they have not been removed from your database. In case darktable wants to create a thumbnail but is not able to open the input file, a skull is displayed instead. Users are advised to remove images from the database (see <a class="xref" title="2.3.6. Selected image(s)" href="#sigil_toc_id_89">Section 2.3.6, “Selected image(s)”</a>) <span class="emphasis"><em>before</em></span> physically removing them from disk. Alternatively you may occasionally run the script<code class="filename">purge_non_existing_images.sh</code> from darktable's toolset to clean-up your database.</p>
+<p>Another possible cause is sometimes darktable encounters an input image having an extension that seems valid for darktable but which has a file format that darktable does not support yet. darktable tries to process the image but is not able to get the job done.</p>
+<p>The third possible cause for getting skulls is memory shortage: If darktable runs out of memory while generating a thumbnail, it will warn you and display a skull – this can happen if darktable is run with suboptimal settings, especially on a 32-bit system. Please consult <a class="xref" title="10.1. darktable and memory" href="../Text/special_topics.xhtml#sigil_toc_id_87">Section 10.1, “darktable and memory”</a> for more information.</p>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_90">2.2.4. Star ratings and color labels</h3>
+</div>
+</div>
+</div>
+<p>Star ratings and color labels help you to sort and rank images according to your own criteria. An image's star rating and its color labels are displayed in the thumbnail.</p>
+<p>You can give a rating from zero to five stars to an image. The quality criteria which lead to a rating are fully up to you. Whenever you import images, each image receives a default rating which you can define in <span>“<span>GUI options</span>”</span> (see <a title="8.1. GUI options" href="../Text/preferences.xhtml#sigil_toc_id_86">Section 8.1, “GUI options”</a>). You can later revise the rating at any time. You can also mark an image as <span>“<span>rejected</span>”</span> by pressing the&nbsp;<img alt="lighttable_thumb_reject" src="../Images/lighttable_thumb_reject.jpg" width="2%"/>&nbsp;icon or typing the <em>r</em> key. This will remove all stars. You can reverse the rejection by applying a new star rating.</p>
+<p>There are several ways to change a rating. While hovering the cursor over an image thumbnail, you can press a number key <span><em>0 – 5</em></span> for the number of stars, or type <span><em>r</em></span> to <span>“<span>reject</span>”</span>an image; this is probably the fastest way when rating your images on first inspection of a film roll.</p>
+<p> </p>
+<div>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>You can also directly click on the stars displayed in the thumbnails; click the <span><em>x</em></span> to reject, click the fifth star to get a rating of five stars, etc. Clicking either the <span><em>x</em></span> or the first star for a second time resets the image rating to unranked, or zero stars. The latter behavior can be changed in the <span>“<span>GUI options</span>”</span> dialog (see <a title="8.1. GUI options" href="../Text/preferences.xhtml#sigil_toc_id_86">Section 8.1, “GUI options”</a>).</td>
+<td>
+<div align="center"><img alt="star_rating_thumbs" src="../Images/star_rating_thumbs.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p> </p>
+<p> </p>
+<div>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>To rate one or more images at once, select those images (see <a title="2.3.5. Select" href="#sigil_toc_id_91">Section 2.3.5, “Select”</a>) and then press the key for your rating, or click the desired star rating in <span><em>the bottom panel</em></span> of the lighttable view.</td>
+<td>
+<div align="center"><img alt="star_rating_panel" src="../Images/star_rating_panel.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p> </p>
+<p>Color labels are another way to sort images, and can be used as an alternative to star ratings or work alongside star ratings. Each image can carry any combination of one or more color labels in red, yellow, green, blue, and purple.</p>
+<p>You can set the color labels for a single image by hovering your cursor over the thumbnail and pressing the function keys <span><em>F1 – F5</em></span>, which correspond with the labels in the order given above.</p>
+<p> </p>
+<div>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>To toggle the color labels of one or more images, select the desired images (see <a title="2.3.5. Select" href="#sigil_toc_id_91">Section 2.3.5, “Select”</a>) and then press the corresponding color button in the bottom panel. To remove all labels from the selected images, press the grey button.</td>
+<td>
+<div align="center"><img alt="color_labels_panel" src="../Images/color_labels_panel.jpg" width="100%"/><br/></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_92">2.2.5. Filtering and sort order</h3>
+</div>
+</div>
+</div>
+<p> </p>
+<div>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>The filtering and sort order of images in the lighttable view are controlled in the top panel.</td>
+<td>
+<div align="center"><img alt="filter_sort_panel" src="../Images/filter_sort_panel.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p> </p>
+<p>With filtering you limit the number of displayed images in your current collection (see also&nbsp;<a title="2.3.2. Collect images" href="#sigil_toc_id_82">Section 2.3.2, “Collect images”</a>). Filtering is mainly based on the star ratings of your images. A typical filtering rule will show all images that have a rating at or above the given number of stars (from one to five). The comparison operators is not restricted to <span>“<span>≥</span>”</span>. By clicking on the operator field you toggle between <span>“<span>≥</span>”</span>, <span>“<span>&gt;</span>”</span>, <span>“<span>≠</span>”</span>, <span>“<span>&lt;</span>”</span>, <span>“<span>≤</span>”</span>, and <span>“<span>=</span>”</span>.</p>
+<p>Alternatively you can make darktable display <span>“<span>all</span>”</span> images, only the <span>“<span>unstarred</span>”</span> ones, only the <span>“<span>rejected</span>”</span> images and all but the rejected ones.</p>
+<p>Images in the lighttable view can be displayed in different sort orders, depending on<span>“<span>filename</span>”</span>, <span>“<span>time</span>”</span> (when the photo was taken), <span>“<span>rating</span>”</span> (i.e. stars), <span>“<span>id</span>”</span> (an internal ordering number of darktable), or <span>“<span>color labels</span>”</span>. You can sort in reversed order by toggling the triangle button to the right of the <span>“<span>sort by</span>”</span> combobox.</p>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_93">2.2.6. Image grouping</h3>
+</div>
+</div>
+</div>
+<p>Grouping images helps improve structure and clarity of your image collection when displayed in lighttable view.</p>
+<p>You can combine images into a group by selecting them, and clicking the <span>“<span>group</span>”</span> button in the <span><em>selected image(s)</em></span> panel (<a title="2.3.6. Selected image(s)" href="#sigil_toc_id_89">Section 2.3.6, “Selected image(s)”</a>), or by typing <span><em>ctrl-g</em></span>. Likewise, you can remove selected images from a group by clicking the <span>“<span>ungroup</span>”</span> button, or typing <span><em>shift-ctrl-g</em></span>. Images generated by duplicating an existing one, are automatically grouped. If you import images from the file system or camera, images with the same base name, but different extensions (eg. IMG_1234.CR2 and IMG_1234.JPG), will form a group.</p>
+<p> </p>
+<div>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>
+<p>Images which are members of a group are labeled with a <span>“<span>G</span>”</span> symbol in their thumbnails.</p>
+</td>
+<td>
+<div align="center"><img alt="grouping_1" src="../Images/grouping_1.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p> </p>
+<p>The group button&nbsp;<img alt="lighttable_icon_group" src="../Images/lighttable_icon_group.jpg" width="2%"/>&nbsp;in the top panel of the lightroom view toggles grouping mode on and off. If grouping is off, each image is displayed as an individual thumb. If grouping is on, images of a group are collapsed, which means they are represented by a single thumbnail. This thumbnail you see is called the group head. If you press the “G” symbol in the group's thumbnail, only this group gets expanded; if you then expand another group, the first group collapses. To collapse an expanded group again, just click on the “G” symbol of its group head.</p>
+<p> </p>
+<div>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>
+<p>An expanded group in the filemanager mode of lighttable view is indicated by an orange frame which appears as soon as your mouse pointer hovers over one of the images.</p>
+</td>
+<td>
+<div align="center"><img alt="grouping_2" src="../Images/grouping_2.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p> </p>
+<p>You can define which image constitutes the group head, while in an expanded view of a group, clicking on the <span>“<span>G</span>”</span> symbol of the desired image.</p>
+<p>If you collapse an image group and then enter darkroom mode (e.g., by double-clicking on the thumbnail), the <span><em>group head</em></span> will be opened for developing.</p>
+<p>Image groups are a convenient way to protect an existing history stack against unintentional changes. Suppose you have just finalized an image and want to protect its current version: all you need to do is select the image, click <span>“<span>duplicate</span>”</span> in the <span><em>selected images</em></span> panel, and make sure that grouping is switched on and that the group is collapsed. Now, whenever you open the image group again in darkroom, only the group head will be altered. The underlying duplicate remains unchanged.</p>
+<p>Please note that <span>“<span>duplicating images</span>”</span> here only generates a copy of your history stack, stored in another small XMP file. There is still only one raw file, so you don't waste a lot of disk space.</p>
+<div class="titlepage">
+<div>
+<div>
+<h3 class="title" id="sigil_toc_id_94">2.2.7. Sidecar files</h3>
+</div>
+</div>
+</div>
+
+<p>darktable is a non-destructive image editor. This means that darktable opens images read-only. Any newly added metadata, tags, and parameters of image operations (the <span class="quote">“<span class="quote">history stack</span>”</span>) are stored in separate <span class="emphasis"><em>.xmp</em></span> files, so-called sidecars, allowing you to store information about the images as well as the full editing history without touching the original raw files. When you import an image into darktable for the first time, an XMP file with default settings is generated automatically.</p>
+<p>For a given source image, multiple editing versions, called duplicates, can co-exist, sharing the same input (raw) data but each having their own metadata, tags and history stack. Each duplicate is represented by a separate XMP sidecar file with a filename constructed in the form <span class="quote">“<span class="quote">&lt;basename&gt;<span class="emphasis"><em>_nn</em></span>.&lt;extension&gt;.xmp</span>”</span>, where <span class="emphasis"><em>nn</em></span> represents the (minimum two-digit) version number of that edit. Information for the initial edit – the <span class="quote">“<span class="quote">duplicate</span>”</span> with version number zero  – is stored in the sidecar file <span class="quote">“<span class="quote">&lt;basename&gt;.&lt;extension&gt;.xmp</span>”</span>. The version number of a duplicate is displayed in the image information panel in each of darktable's views (see an example in <a class="xref" title="2.3.4. Image information" href="#sigil_toc_id_77">Section 2.3.4, “Image information”</a>).</p>
+<p>Sidecar files automatically synchronize with your work without the need to press a <span class="quote">“<span class="quote">save</span>”</span>button. When backing up your data, make sure you also keep the XMP files, as these are needed to fully reconstruct your work in case of a disaster.</p>
+<p>In addition to the sidecar files, darktable keeps all image-related data in its database for fast access. An image can only be viewed and edited from within darktable if its data is loaded in that database. This automatically happens when you first import an image or at any later time by re-importing it (see <a class="xref" title="2.3.1. Import" href="#sigil_toc_id_26">Section 2.3.1, “Import”</a>). In the latter case the database gets updated with data that darktable finds in the sidecar files belonging to that image.</p>
+<p>Once an image has been imported into darktable the database entries take precedence over the XMP file. Subsequent changes to the XMP file by any other software are not visible to darktable – any changes get overwritten the next time darktable synchronizes the file. This behavior can be changed in the preferences dialog (see <a class="xref" title="8.2. Core options" href="../Text/preferences.xhtml#sigil_toc_id_5">Section 8.2, “Core options”</a>). On request darktable looks for updated XMP files at startup and offers a choice whether to update the database or overwrite the XMP file.</p>
+<div>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_95">2.2.8. Importing sidecar files generated by other applications</h3>
+</div>
+</div>
+</div>
+<p>When importing an image, darktable automatically checks if this is accompanied by a sidecar file. Other than the formats <span>“<span>&lt;basename&gt;.&lt;extension&gt;.xmp</span>”</span> and <span>“<span>&lt;basename&gt;<span><em>_nn</em></span>.&lt;extension&gt;.xmp</span>”</span> darktable also checks for the presence of a file in the form <span>“<span>&lt;basename&gt;.xmp</span>”</span>. darktable's own sidecar files are always stored in the first format – the latter one would only be read – not overwritten.</p>
+<p>At present, darktable is able to deal with the following metadata of Lightroom generated sidecar files during the import phase:</p>
+<div><ul><li>tags and hierarchical tags<br/></li>
+<li>color labels<br/></li>
+<li>ratings<br/></li>
+<li>GPS information<br/></li>
+</ul>
+<ul>
+</ul>
+</div>
+<p> </p>
+<p>In addition, darktable has been designed to help migrate some image operations from specific other applications. The aim is not to make darktable a drop-in replacement for any other software; it's just meant to help you recover part of the work you have invested into your image in case you migrate to darktable. It is very important to understand that this import process will never give identical results. The underlying development engines are very different from application to application, and additionally depend a lot on the specific image. In some cases, it will probably be close, and in some cases, the development will need manual adjustment in darktable.</p>
+<p>The migration happens automatically when entering the darkroom view, provided that a corresponding XMP sidecar is found.</p>
+<p>At present, darktable is able to deal with the following development steps from Lightroom-generated XMP files (with the corresponding darktable module in parentheses):</p>
+<div>
+<ul>
+<li>
+<p>crop and rotate <span><em>(crop and rotate)</em></span></p>
+</li>
+<li>
+<p>black level <span><em>(exposure)</em></span></p>
+</li>
+<li>
+<p>exposure <span><em>(exposure)</em></span></p>
+</li>
+<li>
+<p>vignette <span><em>(vignette)</em></span></p>
+</li>
+<li>
+<p>clarity <span><em>(local contrast)</em></span></p>
+</li>
+<li>
+<p>tone curve <span><em>(tone curve)</em></span></p>
+</li>
+<li>
+<p>HSL <span><em>(color zones)</em></span></p>
+</li>
+<li>
+<p>split toning <span><em>(split toning)</em></span></p>
+</li>
+<li>
+<p>grain <span><em>(grain)</em></span></p>
+</li>
+<li>
+<p>spot removal <span><em>(spot removal)</em></span></p>
+</li>
+</ul>
+</div>
+</div>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_96">2.2.9. Local copies</h3>
+</div>
+</div>
+</div>
+<p>Many users have huge image collections which they store on extra hard drives in their desktop computer, or on an external storage medium like a RAID NAS, etc. So it is a common use case to develop some images while travelling using a notebook and then later synchronize them to the original storage medium. But copying images manually from the main storage to the notebook and back is cumbersome and prone to errors.</p>
+<p>The <span>“<span>local copies</span>”</span> feature of darktable has been designed to directly support those use cases. You can create local copies of selected pictures on your computer's local drive. This local copy is always used when present, giving access to the picture if the external storage is no longer connected, and having the advantage of being faster than a slow external drive. At a later point, when connected again with your main storage medium, you can synchronize the XMP sidecar files, deleting the local copy of your input image. These operations can be found in the <span><em>selected images</em></span> panel (see <a title="2.3.6. Selected image(s)" href="#sigil_toc_id_89">Section 2.3.6, “Selected image(s)”</a>).</p>
+<p>For safety reasons, if local copies exist and the external storage is available, the local XMP sidecars are automatically synchronized at start up.</p>
+<p>The local copies are stored into the $HOME/.cache/darktable directory and named <span>“<span>img-&lt;SIGNATURE&gt;.&lt;EXT&gt;</span>”</span>, where:</p>
+<div>
+<table border="0" width="100%"><colgroup><col width="25%"/>
+<col width="75%"/>
+</colgroup>
+<tbody>
+<tr>
+<td><span><em>SIGNATURE</em></span></td>
+<td>is a hash signature (MD5) of the full pathname</td>
+</tr>
+<tr>
+<td><span><em>EXT</em></span></td>
+<td>is the original filename extension</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p> </p>
+<p> </p>
+<div>
+<table border="0" width="100%"><colgroup><col width="70%"/>
+<col width="30%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>
+<p>A local copy is identified in the lighttable view with a white marker on the right of the thumbnail. In addition all local copies carry the <span><em>darktable|local-copy</em></span> tag for selecting them easily.</p>
+</td>
+<td>
+<div align="center"><img alt="local_copies_1" src="../Images/local_copies_1.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="sigil_toc_id_97">2.3. Lighttable panels&nbsp;</h2>
+<div><p> </p>
+<h3 id="sigil_toc_id_26">2.3.1. Import<br/></h3>
+<div>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>This panel is for importing images into film rolls. You can either import a complete folder, by pressing “folder”, or a single image with “image”. You can also cause darktable to search for connected cameras by pressing “scan for devices”. If a supported camera is connected you can import directly from that camera or control the camera from within darktable in tethering mode.</td>
+<td>
+<div align="center"><img alt="panel_import_1" src="../Images/panel_import_1.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Imported images are organized as film rolls (see <a title="2.2.1. Film rolls" href="#sigil_toc_id_80">Section 2.2.1, “Film rolls”</a>). All film rolls are accessible through the <em>collect images</em> module (see <a title="2.3.2. Collect images" href="#sigil_toc_id_82">Section 2.3.2, “Collect images”</a>). If you set the selection attribute to “film roll” you get a list of available film rolls, which can be filtered using the editbox to quickly find the one of interest. Double-click on a film roll in the list and it will open in the lighttable. You can also click the items in <em>recently used collections</em> (see <a title="2.3.3. Recently used collections" href="#sigil_toc_id_83">Section 2.3.3, “Recently used collections”</a>) to open the latest ones you have worked with.</p>
+<div>
+<div>
+<div>
+<div>
+<h4 id="sigil_toc_id_98">2.3.1.1. Import from filesystem</h4>
+</div>
+</div>
+</div>
+<p>You can import either a single image, or a folder. The imported image(s) will show up in a film roll with the name of the filesystem folder.</p>
+<p><img alt="panel_import_2" src="../Images/panel_import_2.jpg" class="center"/><br/></p>
+<p> </p>
+<p>Clicking on “image” or “folder” opens a file selector dialog. Navigate through the filesystem, and select the item to import. On the lower part of the dialog, are some further import options.</p>
+<p>As the name implies, checking “import directories recursively” will import images in the currently selected directory, and all subdirectories. It is not recommended, and wastes resources, to do this on an exhaustive list of images. darktable would generate thumbnails for all of them, but in the end only keep the recent ones in its cache. It is better to import images in smaller chunks, making logical film rolls.</p>
+<p>Checking “ignore JPEG files” is a good choice if there are JPEG images in the same folder that you do not want to process; eg. if the camera stores RAW+JPEG, you often only want to work on the raws, leaving the JPEG images alone.</p>
+<p>You can also apply some metadata during import; see <a title="2.3.10. Metadata editor" href="#sigil_toc_id_106">Section 2.3.10, “Metadata editor”</a> for more details.</p>
+<p>Importing a folder does not mean that darktable copies your images into another folder. It just means that the images are visible in lighttable and thus can be developed. If you delete an image or a folder from disk after having imported them, darktable cannot access them anymore. Importing an image or folder in darktable is not a backup of your filesystem! Moreover, darktable does not watch for changes in the filesystem. Thus, if you add an image to a folder, after having imported that folder in darktable, the new image will not be shown until explicitly imported.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h4 id="sigil_toc_id_99">2.3.1.2. Importing from a connected camera</h4>
+</div>
+</div>
+</div>
+<div>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>When a camera is detected, it will show up in the device panel after pressing “scan for devices”. If you hover your mouse over the camera tab label, a tooltip will pop up with information about the camera, such as model, firmware version, and more. Depending on the camera's support, buttons with actions will be available such as “import from camera” and “tethered shoot”.</td>
+<td>
+<div align="center"><img alt="panel_import_3" src="../Images/panel_import_3.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_100">Import from camera</h5>
+</div>
+</div>
+</div>
+<p>This will bring up an import dialog, showing the images on camera that can be selected for import into a film roll in darktable.</p>
+<p>You define the base directory for storing imported images and the naming pattern of sub directories and individual images in the preferences dialog (see <a title="8.3. Session options" href="../Text/preferences.xhtml#sigil_toc_id_107">Section 8.3, “Session options”</a>).</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_101">Tethered shoot</h5>
+</div>
+</div>
+</div>
+<p>Tethering is used to integrate darktable with your camera. While you take images with your camera, they are automatically imported into darktable, so you can review the result of the shoot. You can also setup remote capture jobs, controlling the number of images and time between captures, along with camera settings such as exposure time, aperture and more.</p>
+<p>If supported by your camera, tethering will take you into the capture view for tethered shooting. Read more about tethering in <a title="Chapter 4. Tethering" href="../Text/tethering.xhtml">Chapter 4, <em>Tethering</em></a>.</p>
+</div>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h4 id="sigil_toc_id_102">2.3.1.3. Supported file formats</h4>
+</div>
+</div>
+</div>
+<p>darktable is focused on managing and developing camera raw files. It supports a huge number of file formats from various camera manufacturers. In addition darktable can read specific <em>low dynamic range</em> and <em>high dynamic range</em> images – mainly for data exchange between darktable and other software.</p>
+<p>In order for darktable to consider a file for import, it must have one of the following extensions (case independent): 3FR, ARI, ARW, BAY, BMQ, CAP, CINE, CR2, CRW, CS1, DC2, DCR, DNG, ERF, FFF, EXR, IA, IIQ, JPEG, JPG, K25, KC2, KDC, MDC, MEF, MOS, MRW, NEF, NRW, ORF, PEF, PFM, PNG, PXN, QTK, RAF, RAW, RDC, RW1, RW2, SR2, SRF, SRW, STI, TIF, TIFF, X3F.</p>
+<p>If darktable was compiled with JPEG2000 support, these extensions are also recognized: J2C, J2K, JP2, JPC.</p>
+<p>If darktable was compiled with GraphicsMagick support, the following extensions are recognized in addition to the standard ones: BMP, DCM, GIF, JNG, JPC, JP2, MIFF, MNG, PBM, PGM, PNM, PPM.</p>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_103">Camera raw files</h5>
+</div>
+</div>
+</div>
+<p>darktable reads raw files using the open source library <a href="https://github.com/darktable-org/rawspeed" target="_top">RawSpeed</a>, originally developed by Klaus Post and now maintained within the darktable project itself. The number of supported cameras and file formats is constantly increasing. It is beyond the scope of this manual to give an exhaustive list. Most modern camera models are supported, and new ones tend to get added very quickly. With the exception of Fujifilm X-Trans cameras, darktable does not decode images from cameras with non-Bayer sensors (e.g. Sigmas with the Foveon X3 sensor).</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_104">LDR image files</h5>
+</div>
+</div>
+</div>
+<p>darktable natively reads “ordinary” images in JPEG, 8-bit/16-bit PNG and 8-bit/16-bit TIFF format. JPEG2000 is also supported if the required libraries are present at compile time. Similarly, if darktable was compiled with GraphicsMagick support, there are further import formats, like GIF, Dicom DCM, additional exotic TIFF formats, and some of Sun's “portable xyz-map” family.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_105">HDR image files</h5>
+</div>
+</div>
+</div>
+<p>darktable reads high dynamic range images in OpenEXR, RGBE and PFM format.</p>
+</div>
+</div>
+<h3 id="sigil_toc_id_82">2.3.2. Collect images<br/></h3>
+<div>
+<div>
+<div>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>The current view in lighttable is called a collection. The <span><em>collect images</em></span> panel lets you narrow down the list of visible images to just the ones you want to work with.</td>
+<td>
+<div align="center"><img alt="panel_collectimages" src="../Images/panel_collectimages.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Information about all images imported into darktable are kept in a database, with various attributes describing each image. You define a collection by applying certain filtering rules to these attributes, creating a subset of images to display in the lighttable view.</p>
+<p>The default collection is based on the film roll attribute – it displays all images of the last imported film roll or any other film roll chosen.</p>
+<div>
+<div>
+<div>
+<div>
+<h4 id="sigil_toc_id_108">2.3.2.1. Usage</h4>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_109">image attributes</h5>
+</div>
+</div>
+</div>
+<p>The left combobox lets you choose from the available attributes:</p>
+<div>
+<table border="0" width="100%"><colgroup><col width="25%"/>
+<col width="75%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>film roll</td>
+<td>
+<p>the film roll to which the image belongs</p>
+</td>
+</tr>
+<tr>
+<td>folders</td>
+<td>
+<p>the disk folder where the input image file is located</p>
+</td>
+</tr>
+<tr>
+<td>camera</td>
+<td>
+<p>the Exif data entry describing the camera make and model</p>
+</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>
+<p>any tag that is attached to the image; if activated a hierarchical list of known tags is displayed for quick selection</p>
+</td>
+</tr>
+<tr>
+<td>date</td>
+<td>
+<p>the date when the photo was taken, in the format <span><em>YYYY:MM:DD</em></span></p>
+</td>
+</tr>
+<tr>
+<td>time</td>
+<td>
+<p>the time (date <span><em>and</em></span> time of day) when the photo was taken, in the format <span><em>YYYY:MM:DD hh:mm:ss</em></span></p>
+</td>
+</tr>
+<tr>
+<td>history</td>
+<td>
+<p>choose images whose history stacks have been altered or not altered</p>
+</td>
+</tr>
+<tr>
+<td>color label</td>
+<td>
+<p>any color label that is attached to the image: <span>“<span>red</span>”</span>, <span>“<span>yellow</span>”</span>, <span>“<span>green</span>”</span>, <span>“<span>blue</span>”</span>, <span>“<span>purple</span>”</span></p>
+</td>
+</tr>
+<tr>
+<td>title</td>
+<td>
+<p>the title, as listed in the image's metadata <span>“<span>title</span>”</span> field</p>
+</td>
+</tr>
+<tr>
+<td>description</td>
+<td>
+<p>the description, as listed in the image's metadata <span>“<span>description</span>”</span> field</p>
+</td>
+</tr>
+<tr>
+<td>creator</td>
+<td>
+<p>the creator, as listed in the image's metadata <span>“<span>creator</span>”</span> field</p>
+</td>
+</tr>
+<tr>
+<td>publisher</td>
+<td>
+<p>the publisher, as listed in the image's metadata <span>“<span>publisher</span>”</span> field</p>
+</td>
+</tr>
+<tr>
+<td>rights</td>
+<td>
+<p>the copyrights statement, as written in the image's metadata <span>“<span>rights</span>”</span>field</p>
+</td>
+</tr>
+<tr>
+<td>lens</td>
+<td>
+<p>the Exif data entry describing the lens</p>
+</td>
+</tr>
+<tr>
+<td>focal length</td>
+<td>
+<p>the focal length value, as derived from Exif data</p>
+</td>
+</tr>
+<tr>
+<td>ISO</td>
+<td>
+<p>the ISO value, as derived from Exif data</p>
+</td>
+</tr>
+<tr>
+<td>aperture</td>
+<td>
+<p>the aperture value, as derived from Exif data</p>
+</td>
+</tr>
+<tr>
+<td>filename</td>
+<td>
+<p>the filename of the physical input image</p>
+</td>
+</tr>
+<tr>
+<td>geotagging</td>
+<td>
+<p>the geo location of the image</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p> </p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_110">search rules</h5>
+</div>
+</div>
+</div>
+<p>In the text field to the right of the attribute, you write a pattern. The pattern is compared against all database entries with the selected attribute. This search detects a match if the images' attribute contains the pattern in its full text. You may use <span><em>%</em></span> as wildcard character. The collection gets limited to those images where the query matches. Leaving the text field empty matches all images for that attribute.</p>
+<p>Attributes with numerical values as well as date and time attributes can be used in combination with comparative and range operators. Write <span><em>&lt;</em></span>, <span><em>&lt;=</em></span>, <span><em>&gt;</em></span>, <span><em>&gt;=</em></span>, <span><em>&lt;&gt;</em></span>, and <span><em>=</em></span> to select images with attributes less, less or equal, greater, greater or equal, not equal, or equal to the a given value, respectively. An expression in the form <span><em>[from;to]</em></span> selects a range of values.</p>
+<p>The box below the search rule will list all matching database entries of the query you are currently working on. This list gets updated continuously as you type. You may also choose sorting criteria by scrolling through the list and double-clicking.</p>
+<p>Clicking on the triangle button to the right of the text field opens a drop-down menu with options to finetune your current collection by adding further rules, or removing them:</p>
+<div>
+<div>
+<div>
+<div>
+<h6 id="sigil_toc_id_111">clear this rule</h6>
+</div>
+</div>
+</div>
+<p>Removes this rule – or resets to default if this is the only rule defined.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h6 id="sigil_toc_id_112">narrow down search</h6>
+</div>
+</div>
+</div>
+<p>Adds a new rule which is combined with the previous rule(s) in a logical <span><em>AND</em></span> operation. An image is only part of the collection if it additionally fulfills the added rule.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h6 id="sigil_toc_id_113">add more images</h6>
+</div>
+</div>
+</div>
+<p>Adds a new rule which is combined with the previous rule(s) in a logical <span><em>OR</em></span> operation. Images that fulfill the new rule are added to the collection.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h6 id="sigil_toc_id_114">exclude images</h6>
+</div>
+</div>
+</div>
+<p>Adds a new rule which is combined with the previous rule(s) in a logical <span><em>EXCEPT</em></span> operation. Images which are selected by the new rule are exempted from the collection.</p>
+</div>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_115">combining rules</h5>
+</div>
+</div>
+</div>
+<p>The logical operators defining the combination of rules are displayed to the right of the rule: <span><em>AND</em></span> by the&nbsp;<img alt="lighttable_icon_and" src="../Images/lighttable_icon_and.jpg" width="2%"/>&nbsp;symbol, <em>OR</em> by the&nbsp;<img alt="lighttable_icon_or" src="../Images/lighttable_icon_or.jpg" width="2%"/>&nbsp;symbol, and <em>EXCEPT</em> by the&nbsp;<img alt="lighttable_icon_except" src="../Images/lighttable_icon_except.jpg" width="2%"/>&nbsp;symbol. Clicking on either symbol gives a choice to change the logical operation.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_116">updating folder path</h5>
+</div>
+</div>
+</div>
+<p>While it is best to not touch imported files behind darktable's back, this module can help you recover from situations when you move imported folders after import. The collect images module has a feature that allows you to tell darktable about the new location of imported folders which have been moved. You set the combobox to <span><em>folders</em></span> to find the original folder name in the tree. The folder name will be displayed striked-out to emphasize that it is no longer there. Then you right-click on the folder name, select <span>“<span>search filmroll...</span>”</span>, and then select the new location of the folder.</p>
+</div>
+</div>
+</div>
+</div>
+<div> </div>
+<h3 id="sigil_toc_id_83">2.3.3. Recently used collections<br/></h3>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>This panel keeps track of the latest collections you have used, so you can jump to recently used collections without remembering what rules were specified in the collection.</td>
+<td>
+<div align="center"><img alt="panel_recent_collections" src="../Images/panel_recent_collections.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sigil_toc_id_77">2.3.4. Image information<br/></h3>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>This panel shows information embedded within an image's Exif data. When hovering with the mouse over thumbnails, darktable will update this view, displaying information of the image currently under the mouse cursor. This panel is also available in darkroom, tethering, map, and print view.</td>
+<td>
+<div align="center"><img alt="panel_metadata" src="../Images/panel_metadata.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sigil_toc_id_91">2.3.5. Select<br/></h3>
+<div>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>This panel allows for a quick selection of images, according to some common criteria.</td>
+<td>
+<div align="center"><img alt="panel_select" src="../Images/panel_select.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h4 id="sigil_toc_id_117">2.3.5.1. Usage</h4>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_118">select all</h5>
+</div>
+</div>
+</div>
+<p>Select all images in the current view (collection), with respect to the filters.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_119">select none</h5>
+</div>
+</div>
+</div>
+<p>De-select all images.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_120">invert selection</h5>
+</div>
+</div>
+</div>
+<p>Select all images that are not currently selected.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_121">select film roll</h5>
+</div>
+</div>
+</div>
+<p>Select all images that are in the same film roll as the currently selected images.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_122">select untouched</h5>
+</div>
+</div>
+</div>
+<p>Select all images that have not yet been developed.</p>
+</div>
+</div>
+<h3 id="sigil_toc_id_89">2.3.6. Selected image(s)<br/></h3>
+<div>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td>This panel provides some actions that operate on selected images.</td>
+<td>
+<div align="center"><img alt="panel_selectedimages" src="../Images/panel_selectedimages.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h4 id="sigil_toc_id_123">2.3.6.1. Usage</h4>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_124">remove</h5>
+</div>
+</div>
+</div>
+<p>Remove the selected images from the darktable database. Those images will not be shown in lighttable anymore, but remain on the filesystem. As darktable stores XMP files with your development parameters on disk, you can later fully reconstruct your work by just re-importing the images.</p>
+<p>When backing up your RAWs make sure to also save the XMP files!</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_125">delete/trash</h5>
+</div>
+</div>
+</div>
+<p>Eliminate the selected images from the darktable database and remove the image files from their respective locations. Depending on the setting of config parameter <span>“<span>send files to trash when erasing images</span>”</span> (<a title="8.1. GUI options" href="../Text/preferences.xhtml#sigil_toc_id_86">Section 8.1, “GUI options”</a>) this either irrevocably deletes the images from filesystem or puts them into your system's trash bin.</p>
+<p>See also preference option <span>“<span>ask before erasing images from disk</span>”</span> (<a title="8.1. GUI options" href="../Text/preferences.xhtml#sigil_toc_id_86">Section 8.1, “GUI options”</a>). If this configuration option is not active, darktable will delete/trash the file(s) without further question.</p>
+<p>When deleting an image with duplicates, darktable keeps the original input file on disk until the last of the duplicates gets deleted.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_126">move</h5>
+</div>
+</div>
+</div>
+<p>Physically move selected images (parent file plus all accompanying XMP sidecar files) to another filesystem folder. darktable does not overwrite images in the target folder. If an input image with the given filename already exists in the target folder the source image is not moved but kept where it is.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_127">copy</h5>
+</div>
+</div>
+</div>
+<p>Physically copy selected images (parent file plus accompanying XMP sidecar file) to another filesystem folder. If an image with the given name already exists in the target folder it does not get overwritten – instead a new duplicate with the given history stack is generated.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_128">create hdr</h5>
+</div>
+</div>
+</div>
+<p>Create a high dynamic range image from the selected images, and store it as a new source file in DNG format. Images need to be properly aligned, which implies that they have been taken on a sturdy tripod. You can also generate HDRs with programs like <a href="http://qtpfsgui.sourceforge.net/" target="_top"><span><em>Luminance HDR</em></span></a>, and later import them into darktable for further processing (see <a title="2.3.1.3. Supported file formats" href="#sigil_toc_id_102">Section 2.3.1.3, “Supported file formats”</a>). Note that darktable will only creates HDR images from raw files.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_129">duplicate</h5>
+</div>
+</div>
+</div>
+<p>Create a virtual copy of selected images within darktable. It allows testing different developments for the same image, for example. Duplicate images share the same parent input file, but each have their own XMP sidecar file.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_130">rotation</h5>
+</div>
+</div>
+</div>
+<p>Perform a counter-clockwise or clockwise rotation on selected images. The third button resets the image rotation to the value in the Exif data. This feature is directly linked to the orientation module (see <a title="3.4.1.2. Orientation" href="../Text/darkroom.xhtml#sigil_toc_id_135">Section 3.4.1.2, “Orientation”</a>) – adjustments are converted into history stack items of that module.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_131">copy locally</h5>
+</div>
+</div>
+</div>
+<p>This action will create local copies of the selected images into the local drive. These copies will then be used when the original images are not accessible (see <a title="2.2.9. Local copies" href="#sigil_toc_id_96">Section 2.2.9, “Local copies”</a>).</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_132">resync local copy</h5>
+</div>
+</div>
+</div>
+<p>This action will synchronize the XMP sidecars of the temporary local copy and the copy in external storage, if needed, and will remove the local copies. Note that if a local copy has been modified and the external storage is not accessible the local copy won't be deleted (see&nbsp;<a title="2.2.9. Local copies" href="#sigil_toc_id_96">Section 2.2.9, “Local copies”</a>).</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_133">group</h5>
+</div>
+</div>
+</div>
+<p>Create a new group from selected images (see <a title="2.2.6. Image grouping" href="#sigil_toc_id_93">Section 2.2.6, “Image grouping”</a>).</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_134">ungroup</h5>
+</div>
+</div>
+</div>
+<p>Remove selected images from the group (see <a title="2.2.6. Image grouping" href="#sigil_toc_id_93">Section 2.2.6, “Image grouping”</a>).</p>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_136">2.3.7. History stack</h3>
+</div>
+</div>
+</div>
+<div>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>This panel allows manipulating the history stack (development) of images. For each image, development is written in a sidecar file (.xmp), and is fully non-destructive.</td>
+<td>
+<div align="center"><img alt="panel_historystack" src="../Images/panel_historystack.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h4 id="sigil_toc_id_137">2.3.7.1. Usage</h4>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_138">copy</h5>
+</div>
+</div>
+</div>
+<p>Copy the history stack of the selected image. You will be prompted for which items are to be include. If more than one image is selected, the history stack is taken from the image that has been selected first.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_139">copy all</h5>
+</div>
+</div>
+</div>
+<p>Copy the complete history stack of the first selected image; all items will be included. If more than one image is selected, the history stack is taken from the image that has been selected first.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_140">discard</h5>
+</div>
+</div>
+</div>
+<p>Physically delete the history stack of the selected images. Beware, this action can not be undone!</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_141">paste</h5>
+</div>
+</div>
+</div>
+<p>Paste a previously copied history stack onto all selected images. You will be prompted for which items to include. This button is greyed out, until a history stack is copied from another image.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_142">paste all</h5>
+</div>
+</div>
+</div>
+<p>Paste all previously copied items of a history history stack onto all selected images. This button is greyed out, until a history stack is copied from another image.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_143">mode</h5>
+</div>
+</div>
+</div>
+<p>This setting defines how a new history stack behaves when pasted on an image that already has a history stack. The “overwrite” mode deletes the previous history stack, whereas “append” will concatenate the two history stacks.</p>
+<p><em>Note: if you use “overwrite” mode to paste history stack entries to the images that wasn't opened in darkroom previously, i.e. the automatic module presets weren't already applied to the image, next time you open said image in darkroom, the automatic presets will be applied to the image. So it may seem as if the “overwrite” mode did not actually override the existing history stack, but in fact it did override it, and the rest was added later.</em></p>
+<p><em>Caution: only in “append” mode you keep the option to later reconstruct your existing history stack whereas in “overwrite” mode your previous edit gets irrevocably lost. Beware, the setting of this parameter remains effective when you quit darktable.</em></p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_144">load sidecar file</h5>
+</div>
+</div>
+</div>
+<p>Opens a dialog box to select an XMP file, thus loading a history stack that you can paste on images.</p>
+<p>Files that were exported by darktable typically contain the full history stack if the file format supports embedded metadata (see <a title="2.3.12. Export selected" href="#sigil_toc_id_3">Section 2.3.12, “Export selected”</a> about this feature and its limitations). You can load an exported image as a sidecar file in the same way as you do with an XMP file. This feature allows you to recover all parameter settings in case you have accidentally lost or overwritten the XMP file. All you need is the source image, typically a raw, and the exported file.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_145">write sidecar files</h5>
+</div>
+</div>
+</div>
+<p>Write XMP sidecar files for all selected images. The filename is generated by appending“.xmp” to the name of the underlying input file.</p>
+<p>By default darktable generates and updates sidecar files automatically whenever you work on an image and change the history stack. You can disable automatic sidecar file generation in the preferences dialog (see <a title="8.2. Core options" href="../Text/preferences.xhtml#sigil_toc_id_86">Section 8.2, “Core options”</a>). However, this is not recommended.</p>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_146">2.3.8. Styles</h3>
+</div>
+</div>
+</div>
+<div>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>This panel provides a powerful functionality in darktable: storing a history stack as a style, and applying it to other images. Styles are created within this panel or in the darkroom (see <a title="3.3.3. History stack" href="../Text/darkroom.xhtml#sigil_toc_id_29">Section 3.3.3, “History stack”</a>). They are managed within this lighttable panel, which allows you to create, apply, edit and delete styles.</td>
+<td>
+<div align="center"><img alt="panel_styles" src="../Images/panel_styles.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h4 id="sigil_toc_id_147">2.3.8.1. Usage</h4>
+</div>
+</div>
+</div>
+<p>This panel displays a list of all available styles. A search field above the list allows you to input a text string which is compared against the styles' names and descriptions, thus limiting the list to the matching ones.</p>
+<p>Double clicking on a style name applies the style to all selected images.</p>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_148">create duplicate</h5>
+</div>
+</div>
+</div>
+<p>When applying a style to selected images, activating this box creates a duplicate of the image before applying the style. Disable this option if you want to try various styles without creating multiple duplicates; beware that in this case any existing history stack gets overwritten and cannot be recovered.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_149">create</h5>
+</div>
+</div>
+</div>
+<p>This creates new styles out of the history stacks of the selected images. For each image a style creation window pops up. You need to supply a unique name for the new style and you can add an additional descriptive text. You have the option to de-select those history stack items which you want to not be part of the newly created style.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_150">edit</h5>
+</div>
+</div>
+</div>
+<p>Styles are collections of history stack items. After pressing <span>“<span>edit</span>”</span>, you are prompted with a dialogue to include or exclude specific items from the stack. Check option <span>“<span>duplicate</span>”</span> if you want to create a new style, instead of overwriting the existing one; you need to provide a new unique style name in this case.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_151">delete</h5>
+</div>
+</div>
+</div>
+<p>This deletes the selected style, without further question.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_152">import</h5>
+</div>
+</div>
+</div>
+<p>You can import a style which has been previously saved by darktable. darktable stores styles as XML files with the extension <span>“<span>.dtstyle</span>”</span>.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_153">export</h5>
+</div>
+</div>
+</div>
+<p>This option saves a selected style to disk as a <span>“<span>.dtstyle</span>”</span> file. This allows publishing styles and sharing styles with other users.</p>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_154">2.3.9. Geotagging</h3>
+</div>
+</div>
+</div>
+<div>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>Use this panel to import and apply GPX track data on a selection of images. Alternatively, you can manually geotag images within the <span><em>Map</em></span> view (see <a title="Chapter 5. Map" href="../Text/map.xhtml">Chapter 5, <em>Map</em></a>).</td>
+<td>
+<div align="center"><img alt="panel_geotagging" src="../Images/panel_geotagging.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h4 id="sigil_toc_id_155">2.3.9.1. Usage</h4>
+</div>
+</div>
+</div>
+<p>A GPS receiver calculates its current position based on the information it receives from satellites and records them in a GPX file – together with the current date and time. The Exif data of the images also contains a time stamp defined by the camera settings. darktable takes the time stamp of the image, looks-up the position in the GPX file at that time, and stores the coordinates (latitude/longitude/elevation) in its database and the image's XMP sidecar file.</p>
+<p>There may occur two problems. In contrast to GPS devices, most cameras don't record the accurate time. Secondly, the time stored in the Exif data doesn't contain a time zone. Most people set their camera to local time, while the GPS devices store the time in UTC (Universal Time, Coordinated), i.e. Greenwich (London) time zone. If the time zones of camera and GPX file differs, than the related location will be wrong.</p>
+<p>If your image already carries the UTC time stamp you can directly apply the GPX track without further adjustments.</p>
+<p>Otherwise we take two steps to correlate the time of camera and GPS tracker, first the offset, then the time zone.</p>
+<div>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>
+<p>To fix the drift of the camera time setting you can either enter it manually into the offset input field or let darktable calculate it. All you need is a picture taken of a reliable time source.</p>
+<p>This can be any precise clock or even better the time displayed on your GPS device (normally it shows the local time, although it stores universal time).</p>
+</td>
+<td>
+<div align="center"><a href="../Images/panel_geotagging_ex1.jpg"><img alt="panel_geotagging_ex1" src="../Images/panel_geotagging_ex1.jpg" width="100%"/></a><br/>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<p>When you have this image selected you can click on the (looking glass) button and darktable will present you an entry box. Just enter the time that is shown on the image. As a result you will get the difference between the time you entered and the one associated with the image in its Exif data.</p>
+<p>Now you can select all the images you want to geotag and click the apply button (currently represented by a check mark). This will alter the time in darktable's internal database for these pictures – so you will also see the change in the image information module on the left.</p>
+</td>
+<td>
+<div align="center"><img alt="panel_geotagging_ex2" src="../Images/panel_geotagging_ex2.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<p>Now you can apply a GPX track. Click the corresponding button and navigate to the GPX file. Before confirming that dialog you should select the corresponding time zone for your camera in the drop-down-menu.</p>
+</td>
+<td>
+<div align="center"><img alt="panel_geotagging_ex3" src="../Images/panel_geotagging_ex3.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Should you ever make a mistake with the time zone selection you can just come back and reapply the GPX file with a different time zone.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<h3 id="sigil_toc_id_106">2.3.10. Metadata editor<br/></h3>
+<div>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>Edit metadata of an image, like <span><em>title</em></span>, <span><em>description</em></span>, <span><em>creator</em></span>,<span><em>publisher</em></span>, or <span><em>rights</em></span>. You can define your own presets if you want to apply specific settings frequently.</td>
+<td>
+<div align="center"><img alt="panel_metadata_editor" src="../Images/panel_metadata_editor.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h4 id="sigil_toc_id_156">2.3.10.1. Usage</h4>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_157">clear</h5>
+</div>
+</div>
+</div>
+<p>Delete existing metadata from the selected image(s).</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_158">apply</h5>
+</div>
+</div>
+</div>
+<p>Apply new settings, as defined in the fields above, to the selected image(s).</p>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_159">2.3.11. Tagging</h3>
+</div>
+</div>
+</div>
+<div>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>This panel is for managing tags on images. Tags are stored in both sidecar files (.xmp) and within the darktable database for a faster access. The panel is divided into two parts: the upper part contains the tag(s) currently attached to the image under the cursor or the selected image(s) if the mouse is outside the lighttable. The lower part contains a list of all available tags in the database, which can be filtered in the text box above.</td>
+<td>
+<div align="center"><img alt="panel_tagging" src="../Images/panel_tagging.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>New tags get added to the list either by typing into the text box and pressing the <span>“<span>new</span>”</span>button, or if an automatically generated tag gets attached to an image, or on import of already tagged images. darktable sorts the list of tags by relevance and frequency of usage.</p>
+<p>Hierarchical tags are supported and can be create using the pipe symbol <span>“<span>|</span>”</span>.</p>
+<p>As you may notice there are automatically created tags like <span>“<span>darktable| exported</span>”</span> or <span>“<span>darktable|styles|your style</span>”</span>, which keep track of your actions and let you easily find already exported images or images with specific styles applied.</p>
+<p><span><em>Tip: ctrl-t opens a small text box at the bottom of the central view for quickly tagging your selected images by typing a tag phrase and hitting return.</em></span></p>
+<div>
+<div>
+<div>
+<div>
+<h4 id="sigil_toc_id_160">2.3.11.1. Usage</h4>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_161">attach</h5>
+</div>
+</div>
+</div>
+<p>Attach the selected tag from the list below to all selected images.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_162">detach</h5>
+</div>
+</div>
+</div>
+<p>Detach the selected tag from all selected images. This also can be done by double clicking the specific tag.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_163">new</h5>
+</div>
+</div>
+</div>
+<p>Create a new tag for the list.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_164">delete</h5>
+</div>
+</div>
+</div>
+<p>Delete a tag from the list and from all images. A warning will be displayed on how many images have this tag attached. Take this warning seriously as there is no way to recover or later find the affected images.</p>
+</div>
+</div>
+</div>
+</div>
+<h3 id="sigil_toc_id_3">2.3.12. Export selected<br/></h3>
+<div>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>Workflow ends in this panel with the exporting of your developed images. You can export to a file on disk, email, various on-line storage places, a webalbum, or a book template. <span><em>Tip: you can use ctrl-e from within the darkroom mode to export.</em></span></td>
+<td>
+<div align="center"><img alt="panel_exportselected" src="../Images/panel_exportselected.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>All settings in this panel can be saved for later reuse. Press the&nbsp;<img alt="darkroom_module_icon_presets" src="../Images/darkroom_module_icon_presets.jpg" width="2%"/>&nbsp;button to manage your presets.</p>
+<div>
+<div>
+<div>
+<div>
+<h4 id="sigil_toc_id_165">2.3.12.1. Usage</h4>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_166">target storage</h5>
+</div>
+</div>
+</div>
+<p>Where to store your selected images. Different back-ends are implemented, including file on disk, a LaTeX book template and various web albums. Depending on the selected target, you will be asked to give additional information, like filenames, or account name and password.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_167">filename template</h5>
+</div>
+</div>
+</div>
+<p>You can define filenames that darktable generates for export. Several pre-defined variables can be used as placeholders:</p>
+<div>
+<table border="0" width="100%"><colgroup><col width="50%"/>
+<col width="50%"/>
+</colgroup>
+<tbody>
+<tr>
+<td><code>$(ROLL_NAME)</code></td>
+<td>roll of the input image</td>
+</tr>
+<tr>
+<td><code>$(FILE_FOLDER)</code></td>
+<td>folder containing the input image</td>
+</tr>
+<tr>
+<td><code>$(FILE_NAME)</code></td>
+<td>basename of the input image</td>
+</tr>
+<tr>
+<td><code>$(FILE_EXTENSION)</code></td>
+<td>extension of the input image</td>
+</tr>
+<tr>
+<td><code>$(ID)</code></td>
+<td>the image id</td>
+</tr>
+<tr>
+<td><code>$(VERSION)</code></td>
+<td>the duplicate version (see <a title="2.2.7. Sidecar files" href="#sigil_toc_id_94">Section 2.2.7, “Sidecar files”</a>)</td>
+</tr>
+<tr>
+<td><code>$(SEQUENCE)</code></td>
+<td>a sequence number within export job</td>
+</tr>
+<tr>
+<td><code>$(YEAR)</code></td>
+<td>year at date of export</td>
+</tr>
+<tr>
+<td><code>$(MONTH)</code></td>
+<td>month at date of export</td>
+</tr>
+<tr>
+<td><code>$(DAY)</code></td>
+<td>day at date of export</td>
+</tr>
+<tr>
+<td><code>$(HOUR)</code></td>
+<td>hour at time of export</td>
+</tr>
+<tr>
+<td><code>$(MINUTE)</code></td>
+<td>minute at time of export</td>
+</tr>
+<tr>
+<td><code>$(SECOND)</code></td>
+<td>second at time of export</td>
+</tr>
+<tr>
+<td><code>$(EXIF_YEAR)</code></td>
+<td>Exif year</td>
+</tr>
+<tr>
+<td><code>$(EXIF_MONTH)</code></td>
+<td>Exif month</td>
+</tr>
+<tr>
+<td><code>$(EXIF_DAY)</code></td>
+<td>Exif day</td>
+</tr>
+<tr>
+<td><code>$(EXIF_HOUR)</code></td>
+<td>Exif hour</td>
+</tr>
+<tr>
+<td><code>$(EXIF_MINUTE)</code></td>
+<td>Exif minute</td>
+</tr>
+<tr>
+<td><code>$(EXIF_SECOND)</code></td>
+<td>Exif second</td>
+</tr>
+<tr>
+<td><code>$(STARS)</code></td>
+<td>star rating</td>
+</tr>
+<tr>
+<td><code>$(LABELS)</code></td>
+<td>colorlabels</td>
+</tr>
+<tr>
+<td><code>$(MAKER)</code></td>
+<td>camera maker</td>
+</tr>
+<tr>
+<td><code>$(MODEL)</code></td>
+<td>camera model</td>
+</tr>
+<tr>
+<td><code>$(TITLE)</code></td>
+<td>title from metadata</td>
+</tr>
+<tr>
+<td><code>$(CREATOR)</code></td>
+<td>creator from metadata</td>
+</tr>
+<tr>
+<td><code>$(PUBLISHER)</code></td>
+<td>publisher from metadata</td>
+</tr>
+<tr>
+<td><code>$(RIGHTS)</code></td>
+<td>rights from metadata</td>
+</tr>
+<tr>
+<td><code>$(USERNAME)</code></td>
+<td>user name</td>
+</tr>
+<tr>
+<td><code>$(PICTURES_FOLDER)</code></td>
+<td>pictures folder</td>
+</tr>
+<tr>
+<td><code>$(HOME)2.2.7. Sidecar files</code></td>
+<td>home folder</td>
+</tr>
+<tr>
+<td><code>$(DESKTOP)</code></td>
+<td>desktop folder</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>All of the variables support basic string substitution inspired by bash. The details differ however, for example all patterns are treated as simple string comparisons. There is no regex support. For example you can do the following: <code>$(ROLL_NAME/search/replace)</code> . This means if your roll name is e.g. <span><em>1970-01-01_RAW_Time-Begins</em></span> and you use<code>$(ROLL_NAME/RAW/JPG)</code> it will result in a roll name of: <span><em>1970-01-01_JPG_Time-Begins</em></span></p>
+<div>
+<table border="0" width="100%"><colgroup><col width="50%"/>
+<col width="50%"/>
+</colgroup>
+<tbody>
+<tr>
+<td><code>$(var-default)</code></td>
+<td>If <code>var</code> is empty, use <code>default</code> .</td>
+</tr>
+<tr>
+<td><code>$(var+alt_value)</code></td>
+<td>If <code>var</code> is set, use <code>alt_value</code> , else use empty string.</td>
+</tr>
+<tr>
+<td><code>$(var:offset)</code></td>
+<td><code>var</code> starting from <code>offset</code> . If <code>offset</code>is less than zero it is counted from the back of the string.</td>
+</tr>
+<tr>
+<td><code>$(var:offset:length)</code></td>
+<td>At most <code>length</code> characters of <code>var</code> , starting from <code>offset</code> . If <code>offset</code> is less than zero it is counted from the back of<code>var</code> . If <code>length</code> is less than zero it indicates the end of the result, counted from the back of <code>var</code> , and not an actual length.</td>
+</tr>
+<tr>
+<td><code>$(var#pattern)</code></td>
+<td>Remove <code>pattern</code> from the start of <code>var</code> .</td>
+</tr>
+<tr>
+<td><code>$(var%pattern)</code></td>
+<td>Remove <code>pattern</code> from the end of <code>var</code> .</td>
+</tr>
+<tr>
+<td><code>$(var/pattern/replacement)</code></td>
+<td>Replace the first occurrence of <code>pattern</code> in<code>var</code> with <code>replacement</code> . If<code>replacement</code> is empty then <code>pattern</code>will be removed.</td>
+</tr>
+<tr>
+<td><code>$(var//pattern/replacement)</code></td>
+<td>Replace all occurrences of <code>pattern</code> in<code>var</code> with <code>replacement</code> . If<code>replacement</code> is empty then <code>pattern</code>will be removed.</td>
+</tr>
+<tr>
+<td><code>$(var/#pattern/replacement)</code></td>
+<td>If <code>var</code> starts with <code>pattern</code> then<code>pattern</code> is replaced with <code>replacement</code> .</td>
+</tr>
+<tr>
+<td><code>$(var/%pattern/replacement)</code></td>
+<td>If <code>var</code> ends with <code>pattern</code> then<code>pattern</code> is replaced with <code>replacement</code> .</td>
+</tr>
+<tr>
+<td><code>$(var^)</code></td>
+<td>Make the first character of <code>var</code> uppercase.</td>
+</tr>
+<tr>
+<td><code>$(var^^)</code></td>
+<td>Make all characters of <code>var</code> uppercase.</td>
+</tr>
+<tr>
+<td><code>$(var,)</code></td>
+<td>Make the first character of <code>var</code> lowercase.</td>
+</tr>
+<tr>
+<td><code>$(var,,)</code></td>
+<td>Make all characters of <code>var</code> lowercase.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_168">output directory</h5>
+</div>
+</div>
+</div>
+<p>Pressing button&nbsp;<img alt="lighttable_directory" src="../Images/lighttable_directory.jpg" width="2%"/>&nbsp;opens a dialog to select the parent directory for export.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_169">on conflict</h5>
+</div>
+</div>
+</div>
+<p>If this option is set to <span>“<span>create unique filename</span>”</span> darktable automatically chooses a unique new file name in case of naming conflicts with existing files. The alternative <span>“<span>overwrite</span>”</span>setting forces darktable to exactly adhere to the selected filename template, overwriting any existing files on conflict. This option gets reset to <span>“<span>create unique filename</span>”</span> after each export job in order to protect you from accidental data loss.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_170">file format</h5>
+</div>
+</div>
+</div>
+<p>darktable can export to various file formats. Depending on the output format you can define additional parameters. For some formats you need to decide on the desired bit depth and the compression method, respectively.</p>
+<p>For some export formats like JPEG you can define an output quality. Higher values will lead to larger file sizes. The default quality <span>“<span>95</span>”</span> is a good setting for very high quality exports, e.g. for archiving or printing purposes. If you need a good compromise between size and quality, e.g. for online image display or uploads, you should consider a value of <span>“<span>90</span>”</span>instead.</p>
+<p>If the file format supports embedded metadata, like JPEG, JPEG2000 and TIFF, darktable will try to store the history stack as XMP tags within the output file. This information can later be used to reconstruct your parameters and settings that have produced the exported image (see <a title="2.3.7. History stack" href="#sigil_toc_id_136">Section 2.3.7, “History stack”</a>).</p>
+<p><span><em>Caution: for various reasons embedding XMP tags into output files may fail without notice, eg. if certain size limits are exceeded. Users are therefore advised to not rely their backup strategy on this feature. To back up your data make sure to save your input (raw) file as well as all of darktable's XMP sidecar files.</em></span></p>
+<p>If you don't want to distribute history stack data with your images, there are various tools to delete embedded XMP tags. As an example you can use the program <a href="http://www.sno.phy.queensu.ca/~phil/exiftool/" target="_top"><span><em>exiftool</em></span></a> with:</p>
+<p> </p>
+<pre>Exiftool -XMP:all= image.jpg
+</pre>
+<p> </p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_171">max size</h5>
+</div>
+</div>
+</div>
+<p>Set the maximum width and height of the output images in pixels. Set both to a value of<span>“<span>0</span>”</span> to export with the original dimensions (after cropping). If the values exceed the original dimensions darktable will either export with the original dimensions or perform an upscaling step, depending on the setting of the following parameter.</p>
+<p><span><em>Caution: it's a frequent pitfall to accidentally put low values, like 1 or 10, in these fields, causing darktable to produce miniature output files. You might think darktable's output is broken, but in fact it only generated what you asked for.</em></span></p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_172">allow upscaling</h5>
+</div>
+</div>
+</div>
+<p>If set to <span>“<span>yes</span>”</span> darktable will perform an upscaling step in case the user defined maximum width and height exceed the original dimensions. If set to <span>“<span>no</span>”</span> the exported image's dimensions will not exceed the original ones (after cropping).</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_173">profile</h5>
+</div>
+</div>
+</div>
+<p>This defines the output color profile. Select <span>“<span>image settings</span>”</span> if you want the settings in the <span><em>output color profile</em></span> (see <a title="3.4.3.3. Output color profile" href="../Text/darkroom.xhtml#sigil_toc_id_178">Section 3.4.3.3, “Output color profile”</a>) module of the individual images to take precedence.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_174">intent</h5>
+</div>
+</div>
+</div>
+<p>This option lets you define the intent, i.e. the way darktable will deal with out-of-gamut colors. See <a title="3.2.10.3. Rendering intent" href="../Text/darkroom.xhtml#sigil_toc_id_179">Section 3.2.10.3, “Rendering intent”</a> for a more detailed description of the available options.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_175">style</h5>
+</div>
+</div>
+</div>
+<p>This option lets you choose a style, i.e. a collection of history stack items, which darktable combines with the existing history stack to generate the output image. These history items are only added temporarily; the original history stack is not overwritten. You can use this feature to add processing steps and parameters that you want to be applied specifically to images before export, e.g. you may define a style that adds a stronger level of sharpening when you produce scaled-down JPEG files for the internet or add a certain level of exposure compensation to all of your output images. Learn more about styles in <a title="2.3.8. Styles" href="#sigil_toc_id_146">Section 2.3.8, “Styles”</a>, and <a title="3.3.3. History stack" href="../Text/darkroom.xhtml#sigil_toc_id_29">Section 3.3.3, “History stack”</a>.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_176">mode</h5>
+</div>
+</div>
+</div>
+<p>When applying a style during export this option defines whether the history stack items of that style replace the original history stack of the image or are appended to it. Technically speaking, in append mode history stack items of the style will constitute separate instances of the respective modules on top of any existing ones (see also <a title="3.2.4. Multiple instances" href="../Text/darkroom.xhtml#sigil_toc_id_180">Section 3.2.4, “Multiple instances”</a>). As a consequence the original history stack will fully remain in effect with the new items being applied additionally. This way you can apply an overall adjustment (e.g. exposure) to a bunch of exported images while respecting the settings of each individual image.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h5 id="sigil_toc_id_177">export</h5>
+</div>
+</div>
+</div>
+<p>Pressing this button starts a background job to export all selected images. A bar at the bottom of the left side panel displays the progress. Furthermore a notification message pops up reporting the export progress. You may click on the pop-up to make it disappear. You may <span><em>abort</em></span> the export job by clicking on the&nbsp;<img alt="lighttable_icon_abort" src="../Images/lighttable_icon_abort.jpg" width="2%"/>&nbsp;icon located close to the progress bar.</p>
+<p><br/></p>
+</div>
+</div>
+</div>
+</body>
+</html>

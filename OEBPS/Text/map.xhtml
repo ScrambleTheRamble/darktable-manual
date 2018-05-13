@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<link href="../Styles/Style0001.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<h1>Chapter 5. Map</h1>
+<div><div>The Map view is were you geotag your images.</div>
+<div><br/></div>
+<div><img alt="map_view" src="../Images/map_view.jpg" class="center"/><br/></div>
+<div>
+<div>
+<div>
+<h2 id="sigil_toc_id_706">5.1. Overview</h2>
+</div>
+</div>
+</div>
+<p>Map view will show you a world map with the currently open image, or film roll of images, pinned to their geotagged location. This requires that the image was geotagged by a camera with that feature. Some newer cameras, including smartphones, are already equipped with GPS receivers. Other cameras may need additional GPS hardware to do this.</p>
+<p>Even if your camera doesn't support this feature, there is an alternative method. darktable can match the Exif time and date data in your image(s) to a separate GPX data tracking file created by a GPS tracker recording your movements. These can be handheld devices or a GPS tracker app on your smartphone. This is all done in the lighttable view (see <a title="2.3.9. Geotagging" href="../Text/lighttable.xhtml#sigil_toc_id_154">Section 2.3.9, “Geotagging”</a>).</p>
+<div>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_707">5.1.1. Center map view</h3>
+</div>
+</div>
+</div>
+<div>
+<table border="0" width="100%"><colgroup><col width="67%"/>
+<col width="33%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>In the center of the map view you will see a map.</td>
+<td>
+<div><img alt="map_center_view" src="../Images/map_center_view.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Map data are taken from open map sources on the internet. New map data are only available if you are connected to the internet. darktable keeps a disk cache of previously loaded map data.</p>
+<p>Your mouse will allow navigation in the map. Left-click will drag the map; using the scroll-wheel will zoom in or out.</p>
+<p>There are on-screen controls and displays that assist you to find your way. A navigation area is located on top left of the map. Use it as an alternative to mouse-dragging and scrolling. The scale of your map is displayed on bottom left. On bottom right you see the geographical coordinates for the center of the map.</p>
+<p>Images that already have geo location attributes in their metadata are displayed as small icons on the map.</p>
+<p>In order to assign geo coordinates to an image, activate the film-strip on the lower panel (press <span><em>Ctrl-f</em></span>). You can simply assign a geo location to an image by dragging the image icon from the film-strip and position it onto the map. darktable will record the new geo location (longitude and latitude) as part of the image metadata. Exported images will include this data.</p>
+<p>In order to remove geo coordinates from an image just drag it from the map and drop it onto the filmstrip.</p>
+<p>Left and right to the central map there are panels for additional control.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_708">5.1.2. Undo/redo</h3>
+</div>
+</div>
+</div>
+<p>All image moves in the map view are recorded by darktable. It is then possible to undo or redo such changes to recover a previous state. Note that this undo/redo facility is unlimited while moving images but it is reset each time the map view is left.</p>
+<p>The default key shortcuts are:</p>
+<div>
+<ul>
+<li>
+<p><span><em>Ctrl-z</em></span> : undo last move</p>
+</li>
+<li>
+<p><span><em>Ctrl-y</em></span> : redo last undo (does nothing if undo has not been used yet)</p>
+</li>
+</ul>
+</div>
+</div>
+<div>
+<div>
+<div>
+<h2 id="sigil_toc_id_709">5.2. Map panels</h2>
+</div>
+</div>
+</div>
+<p>This section contains documentation for panels that are specific to the map view.</p>
+<div>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_710">5.2.1. Left panels</h3>
+</div>
+</div>
+</div>
+<div>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>
+<p>The panels on the left side we already know from lighttable mode (<a title="2.3. Lighttable panels" href="../Text/lighttable.xhtml#sigil_toc_id_97">Section 2.3, “Lighttable panels”</a>).</p>
+<p>Choose your image selection rules with the <span><em><a title="2.3.2. Collect images" href="../Text/lighttable.xhtml#sigil_toc_id_82">collect images</a>&nbsp;</em></span>panel. Recently used collections can be chosen with their respective names in a separate panel. You can also get an overview of the information of the image under your mouse cursor in a panel labeled <a title="2.3.4. Image information" href="../Text/lighttable.xhtml#sigil_toc_id_77"><span><em>image information</em></span></a>.</p>
+</td>
+<td>
+<div><img alt="left_panels" src="../Images/left_panels.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_711">5.2.2. Find location</h3>
+</div>
+</div>
+</div>
+<p> </p>
+<div>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>
+<p>The <span><em>find location</em></span> module is used to search for a place on map. You need to be connected to the internet to use this feature.</p>
+<p>To use, type in a place or address, press enter and a list of results will be shown. Click on one of the resulting items and the map will zoom to that location. Additionally, an outline covering that location, or a pin pointing at the location will be displayed. Now drag images from the film strip at the bottom of the screen to their location on the map. The GPS location will be embedded in the image.</p>
+</td>
+<td>
+<div><img alt="find_location" src="../Images/find_location.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_712">5.2.3. Map settings</h3>
+</div>
+</div>
+</div>
+<div>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>
+<p>In the <span><em>map settings</em></span> panel you can select your preferred map data from various providers. Some will provide different layers, such as satellite view etc., which you can toggle.</p>
+</td>
+<td>
+<div><img alt="map_settings" src="../Images/map_settings.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_713">5.2.4. Tagging</h3>
+</div>
+</div>
+</div>
+<div>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>
+<p>The <span><em>tagging</em></span> panel allows you to attach or detach different tags to an image as well as creating or deleting a tag. It is divided into two parts. The upper part contains tags that are currently attached to the image. The lower part contains all available tags. You must select or mouse over an image for the data to be displayed. See <a title="2.3.11. Tagging" href="https://www.darktable.org/usermanual/en/tagging.html">Section 2.3.11, “Tagging”</a> for more details.</p>
+</td>
+<td>
+<div><img alt="tagging" src="../Images/tagging.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>

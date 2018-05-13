@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<link href="../Styles/Style0001.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<h1>Chapter 7. Print<br/></h1>
+<div><div>The print view lets you output a selected image to your printer.</div>
+<div><img alt="print_view" src="../Images/print_view.jpg" class="center"/><br/></div>
+</div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<h2 id="sigil_toc_id_716">7.1. Overview</h2>
+</div>
+</div>
+</div>
+<p>This view is about printing – or the joy of giving birth to a photograph which can be put on the wall. Because printing is not easy, there are many technical aspects to be taken into account.</p>
+<p>After selecting an image in the lighttable view (see <a title="2.1. Overview" href="../Text/lighttable.xhtml#sigil_toc_id_75">Section 2.1, “Overview”</a>) one can enter the print module where there are several options for the print layout and for selecting which printer to use.</p>
+<p>The central area displays the image layout on the paper (the white area). Some gray borders may be displayed around the image to represent the printable area (the page minus the borders) not filled by the image.</p>
+<p>On the left side you find the <span><em>collect images</em></span> panel which is described in more detail in <a title="2.3.2. Collect images" href="../Text/lighttable.xhtml#sigil_toc_id_82">Section 2.3.2, “Collect images”</a>. This panel lets you define which images are present in the filmstrip. Visibility of the filmstrip – located in the bottom panel – is toggled by pressing <span><em>ctrl-f</em></span> (see <a title="1.2.3. Filmstrip" href="../Text/Overview.xhtml#sigil_toc_id_20">Section 1.2.3, “Filmstrip”</a>). On the left side you also have an <span><em>image information</em></span> panel which displays useful Exif data of the image in the center area, or the filmstrip image under the pointer, respectively (see <a title="2.3.4. Image information" href="../Text/lighttable.xhtml#sigil_toc_id_77">Section 2.3.4, “Image information”</a>).</p>
+<p>On the right panel the print settings module has many options to layout the image on the page, select the paper, options for exporting, etc. This module is described in depth in the section below.</p>
+<p>This module supports the printer's ICC profile which is somewhat mandatory if you want to get a high quality print close to the image displayed on the screen.</p>
+<p>It is important to note that ICC profiles provided by the paper and/or printer manufacturers cannot be used on GNU/Linux as they depend on the printer drivers. The darktable print module is using <a href="http://www.cups.org/" target="_top">CUPS</a> and there is no ready-to-use ICC profiles for this driver.</p>
+</div>
+</div>
+</div>
+<div> </div>
+<div>
+<div>
+<div>
+<h2 id="sigil_toc_id_717">7.2. Usage</h2>
+</div>
+</div>
+</div>
+<p> </p>
+<div>
+<table border="0" width="100%"><colgroup><col width="60%"/>
+<col width="40%"/>
+</colgroup>
+<tbody>
+<tr>
+<td>The print module has many options. We describe the panel in this section.</td>
+<td>
+<div><img alt="panel_printing" src="../Images/panel_printing.jpg" width="100%"/><br/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p> </p>
+<div>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_718">7.2.1. Printer section</h3>
+</div>
+</div>
+</div>
+<h5 id="sigil_toc_id_719">printer</h5>
+<p>This entry is to select one of the installed printers.</p>
+<h5 id="sigil_toc_id_720">profile</h5>
+<p>The printer's ICC profile for the loaded paper. This is the profile specific to the printer and printer's paper. This profile is the last color space transformation done to the picture whose goal is to create a high quality print.</p>
+<h5 id="sigil_toc_id_721">intent</h5>
+<p>The print rendering intent (<span>“<span>perceptual</span>”</span>, <span>“<span>relative colorimetric</span>”</span>, <span>“<span>saturation</span>”</span> or <span>“<span>absolute colorimetric</span>”</span>). See <a title="3.2.10.3. Rendering intent" href="../Text/darkroom.xhtml#sigil_toc_id_179">Section 3.2.10.3, “Rendering intent”</a> for more information.</p>
+<h5 id="sigil_toc_id_722">black point compensation</h5>
+<p>Whether to adjust the black point of the output profile which is often lighter than the input profile. This should be <span>“<span>on</span>”</span> when the above intent is set to <span>“<span>relative colorimetric</span>”</span>.</p>
+</div>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_723">7.2.2. Page section</h3>
+</div>
+</div>
+</div>
+<h5 id="sigil_toc_id_724">paper size</h5>
+<p>The size of the paper on which to print.</p>
+<h5 id="sigil_toc_id_725">orientation</h5>
+<p>Portrait or landscape (note that darktable chooses by default the best fit).</p>
+<h5 id="sigil_toc_id_726">units</h5>
+<p>The unit to use for setting the margins. <span>“<span>mm</span>”</span>, <span>“<span>cm</span>”</span>, and <span>“<span>inch</span>”</span> are available options.</p>
+<h5 id="sigil_toc_id_727">margins</h5>
+<p>It is possible to set each margin separately or all together by clicking on the middle<span>“<span>lock</span>”</span> button.</p>
+<h5 id="sigil_toc_id_728">image width/height</h5>
+<p>This information field displays the actual image width and height (given with the selected units) on the paper.</p>
+<h5 id="sigil_toc_id_729">scale factor</h5>
+<p>This information field displays the scaling of the image to fit on the paper. If this value is less than 1 the image is down-scaled otherwise it is up-scaled. This is an important factor to watch – a too large value (up-scale) may result in a low quality print. The corresponding dpi (dots per inch) is also displayed.</p>
+<h5 id="sigil_toc_id_730">alignment</h5>
+<p>This option allows you to select the alignment of the image on the paper.</p>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_731">7.2.3. Print settings</h3>
+</div>
+</div>
+</div>
+<h5 id="sigil_toc_id_732">profile</h5>
+<p>This allows you to select the export profile to use. This profile is the entry point used for the next transformation using the printer's ICC profile above. Usually it is better to prefer a large gamut like AdobeRGB rather than a smaller one as sRGB.</p>
+<h5 id="sigil_toc_id_733">intent</h5>
+<p>This option sets the rendering intent to use when exporting the image. For more information see <a title="3.2.10.3. Rendering intent" href="../Text/darkroom.xhtml#sigil_toc_id_179">Section 3.2.10.3, “Rendering intent”</a>.</p>
+<h5 id="sigil_toc_id_734">style</h5>
+<p>Defines a style to apply when exporting the image and defaults to <span>“<span>none</span>”</span>. See the <span><em>export</em></span> panel (<a title="2.3.12. Export selected" href="../Text/lighttable.xhtml#sigil_toc_id_3">Section 2.3.12, “Export selected”</a>) for a more detailed discussion of applying a style during export.</p>
+<h5 id="sigil_toc_id_735">mode</h5>
+<p>This selects whether the style is appended to the existing history stack or replacing it completely. See&nbsp;<a title="2.3.12. Export selected" href="../Text/lighttable.xhtml#sigil_toc_id_3">Section 2.3.12, “Export selected”</a> for more details.</p>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_736">7.2.4. Print button</h3>
+</div>
+</div>
+</div>
+<p>At the bottom of the right panel you find the <span>“<span>print</span>”</span> button. When clicked the image is exported using the selected options and sent to the printer.</p>
+</body>
+</html>

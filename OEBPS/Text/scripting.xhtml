@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<link href="../Styles/Style0001.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<h1>Chapter 9. Scripting with Lua<br/></h1>
+<div>darktable comes with a versatile scripting interface for functionality enhancement.<br/></div>
+<div><br/></div>
+<div><img alt="lua_view" src="../Images/lua_view.jpg" class="center"/><br/></div>
+<div>
+<div>
+<div>
+<h2 id="sigil_toc_id_802">9.1. Lua usage</h2>
+</div>
+</div>
+</div>
+<p>Lua can be used to define actions which darktable will perform whenever a specified event is triggered. One example might be calling an external application during file export in order to apply additional processing steps outside of darktable.</p>
+<p>darktable uses <a href="http://www.lua.org/" target="_top"><span><em>Lua</em></span></a>, which is an independent project founded in 1993, providing a powerful, fast, lightweight, embeddable scripting language. Lua is widely used by many open source applications, in commercial programs, and for games programming.</p>
+<p>darktable uses Lua version 5.2. Describing the principles and syntax of Lua is beyond the scope of this usermanual. For a detailed introduction see the <a href="http://www.lua.org/manual/5.2/manual.html" target="_top">Lua reference manual</a>.</p>
+<div>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_803"><a name="lua_basic_principles"></a>9.1.1. Basic principles</h3>
+</div>
+</div>
+</div>
+<p>At startup, darktable will automatically run two Lua scripts:</p>
+<div>
+<ul>
+<li>
+<p>a script called <span><em>luarc</em></span> in <span><em>$DARKTABLE/share/darktable</em></span></p>
+</li>
+<li>
+<p>a script called <span><em>luarc</em></span> in the user's configuration directory</p>
+</li>
+</ul>
+</div>
+<p>$DARKTABLE is used here to represent your system's darktable installation directory.</p>
+<p>This is the only time darktable will run Lua scripts by itself. The script can register callbacks to perform actions on various darktable events. This callback mechanism is the primary way to trigger lua actions.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_804"><a name="lua_hello_world"></a>9.1.2. A simple lua example</h3>
+</div>
+</div>
+</div>
+<p>Let's start with a simple example. We will print some code on the console. Create a file called <span><em>luarc</em></span> in darktable's configuration directory (usually <span><strong>~/.config/darktable/</strong></span>) and add the following line to it:</p>
+<p> </p>
+<pre>print("Hello World !")</pre>
+<p> </p>
+<p>Start darktable and you will see the sencence <span><em>Hello World !</em></span> printed on the console. Nothing fancy but it's a start...</p>
+<p>At this point, there is nothing specific to darktable in the script. We simply use the standard <code>print</code> function to print a string. That's nice and all, but we can do better than that. To access the darktable API you first need to <code>require</code> it and save the returned object in a variable. Once this is done you can access the darktable API as subfields of the returned object. All of this is documented in darktable's Lua API reference manual (see <a title="9.2. Lua API" href="#sigil_toc_id_813">Section 9.2, “Lua API”</a>).</p>
+<p> </p>
+<pre>local darktable = require "darktable"
+darktable.print_error("Hello World !")</pre>
+<p> </p>
+<p>Run the script ... and nothing happens. The function <code>darktable.print_error</code> is just like print but will only print the message if you have enabled lua traces with <span><strong>-d lua&nbsp;</strong></span>on the command line. This is the recommended way to do traces in a darktable lua script.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_805"><a name="lua_print_images"></a>9.1.3. Printing labeled images</h3>
+</div>
+</div>
+</div>
+<p>This first example showed us the very basics of lua and allowed us to check that everything is working properly. Let's do something a little bit more complex. Let's try to print the list of images that have a red label attached to them. But first of all, what is an image?</p>
+<p> </p>
+<pre>local darktable = require "darktable"
+local debug = require "darktable.debug"
+print(darktable.debug.dump(darktable.database[1]))</pre>
+<p> </p>
+<p>Running the code above will produce a lot of output. We will look at it in a moment, but first let's look at the code itself.</p>
+<p>We know about requiring <code>darktable</code> . Here, we need to separately require<code>darktable.debug</code> which is an optional section of the API that provides helper functions to help debug lua scripts.</p>
+<p><code>darktable.database</code> is a table provided by the API that contains all images in the database (currently visible or not, duplicate or not...). Each entry in the database is an image object. Image objects are complex objects that allow you to manipulate your image in various ways (it is all documented in the <code>types_dt_lua_image_t</code> section of the API manual). To display our images, we use <code>darktable.debug.dump</code> which is a function that will take anything as its parameter and recursively dump its content. Since images are complex objects that indirectly reference other complex objects, the resulting output is huge. Below is a cut down example of the output.</p>
+<div><p>          <code><br/> toplevel (userdata,dt_lua_image_t) : /images/100.JPG<br/>    publisher (string) : ""<br/>    path (string) : "/images"<br/>    move (function)<br/>    exif_aperture (number) : 2.7999999523163<br/>    rights (string) : ""<br/>    make_group_leader (function)<br/>    exif_crop (number) : 0<br/>    duplicate_index (number) : 0<br/>    is_raw (boolean) : false<br/>    exif_iso (number) : 200<br/>    is_ldr (boolean) : true<br/>    rating (number) : 1<br/>    description (string) : ""<br/>    red (boolean) : false<br/>    get_tags (function)<br/>    duplicate (function)<br/>    creator (string) : ""<br/>    latitude (nil)<br/>    blue (boolean) : false<br/>    exif_datetime_taken (string) : "2014:04:27 14:10:27"<br/>    exif_maker (string) : "Panasonic"<br/>    drop_cache (function)<br/>    title (string) : ""<br/>    reset (function)<br/>    create_style (function)<br/>    apply_style (function)<br/>    film (userdata,dt_lua_film_t) : /images<br/>       1 (userdata,dt_lua_image_t): .toplevel<br/>       [......]<br/>    exif_exposure (number) : 0.0062500000931323<br/>    exif_lens (string) : ""<br/>    detach_tag (function): toplevel.film.2.detach_tag<br/>    exif_focal_length (number) : 4.5<br/>    get_group_members (function): toplevel.film.2.get_group_members<br/>    id (number) : 1<br/>    group_with (function): toplevel.film.2.group_with<br/>    delete (function): toplevel.film.2.delete<br/>    purple (boolean) : false<br/>    is_hdr (boolean) : false<br/>    exif_model (string) : "DMC-FZ200"<br/>    green (boolean) : false<br/>    yellow (boolean) : false<br/>    longitude (nil)<br/>    filename (string) : "100.JPG"<br/>    width (number) : 945<br/>    attach_tag (function): toplevel.film.2.attach_tag<br/>    exif_focus_distance (number) : 0<br/>    height (number) : 648<br/>    local_copy (boolean) : false<br/>    copy (function): toplevel.film.2.copy<br/>    group_leader (userdata,dt_lua_image_t): .toplevel<br/>    </code><br/>As we can see, an image has a large number of fields which provide all sort of information about it. We are interested in the red label. This field is a boolean, and the documentation tells us that it can be written. We now just need to find all images with that field and print them out.<br/></p>
+</div>
+<p> </p>
+<pre>darktable = require "darktable"
+for _,v in ipairs(darktable.database) do
+ if v.red then
+ print(tostring(v))
+ end
+end</pre>
+<p> </p>
+<p>This code should be quite simple to understand at this point, but it contains a few interesting aspects about lua that are worth highlighting:</p>
+<div>
+<ul>
+<li>
+<p><code>ipairs</code> is a standard lua function that will iterate through all numeric indices of a table. We use it here because <code>darktable.database</code> has non-numeric indices which are functions to manipulate the database itself (adding or deleting images, for example).</p>
+</li>
+<li>
+<p>Iterating through a table will return both the key and the value used. It is conventional in lua to use a variable named <span>“<span> <code>_</code> </span>”</span> to store values that we don't care about.</p>
+</li>
+<li>
+<p>Note that we use the standard lua function <code>tostring</code> here and not the darktable specific <code>darktable.debug.dump</code> . The standard function will return a name for the object whereas the debug function will print the content. The debug function would be too verbose here. Once again, it is a great debug tool but should not be used for anything else.</p>
+</li>
+</ul>
+</div>
+<p> </p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_806"><a name="lua_simple_shortcut"></a>9.1.4. Adding a simple shortcut</h3>
+</div>
+</div>
+</div>
+<p>So far, all our scripts have done things during startup. This is of limited use and doesn't allow us to react to real user actions. To do more advanced things we need to register a function that will be called on a given event. The most common event to react to is a keyboard shortcut.</p>
+<p> </p>
+<pre>darktable = require "darktable"
+local function hello_shortcut(event, shortcut)
+darktable.print("Hello, I just received '"..event..
+ "' with parameter '"..shortcut.."'")
+end
+darktable.register_event("shortcut",hello_shortcut,
+ "A shortcut that print its parameters")
+ </pre>
+<p> </p>
+<p>Now start darktable, go to <code> preferences =&gt; shortcut =&gt; lua =&gt; A shortcut that print its parameters </code> assign a shortcut and try it. You should have a nice message printed on the screen.</p>
+<p>Let's look at the code in details. We first define a function with two parameters. These parameters are strings. The first one is the type of event that is triggered (<code>"shortcut"</code> ) and the second one is what shortcut specifically ( <code>"A shortcut that print its parameters"</code> ). The function itself calls <code>darktable.print</code> that will print the message as an overlay in the main window.</p>
+<p>Once that function is defined, we register it as a shortcut callback. To do that we call<code>darktable.register_event</code> which is a generic function for all types of events. We tell it that we are registering a shortcut event, then we give the callback to call and last, we give the string to use to describe the shortcut in the preference window.</p>
+<p>Let's try a shortcut a little more interactive. This one will look at the images the user is currently interested in (selected or moused-over) and will increase their rating.</p>
+<p> </p>
+<pre>darktable = require "darktable"
+darktable.register_event("shortcut",function(event,shortcut)
+ local images = darktable.gui.action_images
+ for _,v in pairs(images) do
+ v.rating = v.rating + 1
+ end
+ end,"Increase the rating of an image")
+ </pre>
+<p> </p>
+<p>At this point, most of this code should be self explanatory. Just a couple of notes:</p>
+<div>
+<ul>
+<li>
+<p>Instead of declaring a function and referencing it, we declare it directly in the call to <code>darktable.register_event</code> this is strictly equivalent but slightly more compact.</p>
+</li>
+<li>
+<p><code>image.rating</code> is a field of any image that gives its rating (between 0 and 5 stars, -1 means rejected).</p>
+</li>
+<li>
+<p><code>darktable.gui.action_images</code> is a table containing all the images of interest. darktable will act on selected images if any image is selected, and on the image under the mouse if no image is selected. This function allows to easily follow darktable's UI logic in lua.</p>
+</li>
+</ul>
+</div>
+<p> </p>
+<p>If you select an image and press your shortcut a couple of time, it will work correctly at first but when you have reached five stars, darktable will start showing the following error on the console:</p>
+<div><p>          <code><br/> <br/> <br/> LUA ERROR : rating too high : 6<br/> stack traceback:<br/> [C]: in ?<br/> [C]: in function '__newindex'<br/>   ./configdir/luarc:10: in function &lt;./configdir/luarc:7&gt;<br/>       LUA ERROR : rating too high : 6<br/>   <br/> <br/>           </code><br/><br/>        </p>
+</div>
+<p> </p>
+<p>This is lua's way of reporting errors. We have attempted to set a rating of 6 to an image, but a rating can only go as high as 5. It would be trivial to add a check, but let's go the complicated way and catch the error instead.</p>
+<p> </p>
+<pre>darktable.register_event("shortcut",function(event,shortcut)
+ local images = darktable.gui.action_images
+ for _,v in pairs(images) do
+ result,message = pcall(function()
+ v.rating = v.rating + 1
+ end)
+ if not result then
+ darktable.print_error("could not increase rating of image "..
+ tostring(v).." : "..message)
+ end
+ end
+end,"Increase the rating of an image")</pre>
+<p> </p>
+<p><code>pcall</code> will run its first argument and catch any exception thrown by it. If there is no exception it will return <code>true</code> plus any result returned by the function; if there is an exception it will return <code>false</code> and the error message of the exception. We simply test these results and print them on the console...</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_807"><a name="lua_storage_example"></a>9.1.5. Exporting images with Lua</h3>
+</div>
+</div>
+</div>
+<p>We have learned to use lua to adapt darktable to our particular workflow, let's look at how to use lua to easily export images. darktable can easily export images to quite a few online services but there are always more. If you are able to upload an image to a service via the command line then you can use lua to integrate it into darktable's user interface.</p>
+<p>In this next example we will use lua to export via <span><strong>scp</strong></span>. A new storage will appear in darktable's UI which will export images to a remote target via ssh's copy mechanism.</p>
+<p> </p>
+<pre>darktable = require "darktable"
+darktable.preferences.register("scp_export","export_path",
+ "string","target SCP path",
+ "Complete path to copy to. Can include user and hostname","")
+darktable.register_storage("scp_export","Export via scp",
+ function( storage, image, format, filename,
+ number, total, high_quality, extra_data)
+ if coroutine.yield("RUN_COMMAND","scp "..filename.." "..
+ darktable.preferences.read("scp_export",
+ "export_path","string")) then
+ darktable.print_error("scp failed for "..tostring(image))
+ end
+end)</pre>
+<p> </p>
+<p><code>darktable.preferences.register</code> will add a new preference to darktable's preference menu. <code>scp_export</code> and <code>export_path</code> allow us to uniquely identify our preference. These fields are reused when we read the value of the preference. The <code>string</code> field tells the lua engine that the preference is a string. It could also be an integer, a filename or any of the types detailed in API manual relating to<code>types_lua_pref_type</code> . We then have the label for the preference in the preference menu, the tooltip when hovering over the value and a default value.</p>
+<p><code>darktable.register_storage</code> is the call that actually registers a new storage. The first argument is a name for the storage, the second is the label that will be displayed in the UI and last is a function to call on each image. This function has a lot of parameters, but <code>filename</code> is the only one we use in this example. It contains the name of a temporary file where the image was exported by darktable's engine.</p>
+<p>This code will work but it has a couple of limitations. This is just a simple example after all:</p>
+<div>
+<ul>
+<li>
+<p>We use preferences to configure the target path. It would be nicer to add an element to the export UI in darktable. We will detail how to do that in the next section</p>
+</li>
+<li>
+<p>We do not check the returned value of scp. That command might fail, in particular if the user has not correctly set the preference.</p>
+</li>
+<li>
+<p>This script can't read input from the user. The remote scp must use password-less copy. Scp can't be provided a password easily, so we will leave it that way</p>
+</li>
+<li>
+<p>There is no message displayed once the example is done, only the progressbar on the lower left side tells the user that the job is done.</p>
+</li>
+<li>
+<p>We use <code>coroutine.yield</code> to call an external program. The normal<code>os.execute</code> would block other lua codes from happening.</p>
+</li>
+</ul>
+</div>
+<p> </p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_808"><a name="lua_gui_example"></a>9.1.6. Building User Interface elements</h3>
+</div>
+</div>
+</div>
+<p>Our previous example was a bit limited. In particular the use of a preference for the export path wasn't very nice. We can do better than that by adding elements to the user interface in the export dialog.</p>
+<p>UI elements are created via the <code>darktable_new_widget</code> function. This function takes a type of widget as a parameter and returns a new object corresponding to that widget. You can then set various fields to that widget to set its parameters. You will then use that object as a parameter to various functions that will add it to the darktable UI. The following simple example adds a lib in the lighttable view with a simple label</p>
+<pre>local my_label = darktable.new_widget("label")
+my_label.label = "Hello, world !"
+dt.register_lib("test","test",false,{
+ [dt.gui.views.lighttable] = {"DT_UI_CONTAINER_PANEL_LEFT_CENTER",20},
+ },my_label)
+ </pre>
+<p>There is a nice syntactic trick to make UI element code easier to read and write. You can call these objects as functions with a table of key values as an argument. This allows the following example to work. It creates a container widget with two sub-widgets. A label and a text entry field.</p>
+<pre>local my_widget = darktable.new_widget("box"){
+orientation = "horizontal",
+darktable.new_widget("label"){ label = "here =&gt; " },
+darktable.new_widget("entry"){ tooltip = "please enter text here" }
+}
+</pre>
+<p>Now that we know that, let's improve our script a bit.</p>
+<pre>darktable = require "darktable"
+local scp_path = darktable.new_widget("entry"){
+ tooltip ="Complete path to copy to. Can include user and hostname",
+ text = "",
+ reset_callback = function(self) self.text = "" end
+}
+darktable.register_storage("scp_export","Export via scp",
+ function( storage, image, format, filename,
+ number, total, high_quality, extra_data)
+ if coroutine.yield("RUN_COMMAND","scp "..filename.." "..
+ scp_path.text
+ ) then
+ darktable.print_error("scp failed for "..tostring(image))
+ end
+ end,
+ nil, --finalize
+ nil, --supported
+ nil, --initialize
+ darktable.new_widget("box") {
+ orientation ="horizontal",
+ darktable.new_widget("label"){label = "target SCP PATH "},
+ scp_path,
+})
+</pre>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_809"><a name="lua_sharing_scripts"></a>9.1.7. Sharing scripts</h3>
+</div>
+</div>
+</div>
+<p>So far, our lua code was in <span><em>luarc</em></span>. That's a good way to develop your script but not very practical for distribution. We need to make this into a proper lua module. To do that, we save the code in a separate file (<span><strong>scp-storage.lua</strong></span> in our case):</p>
+<p> </p>
+<pre>--[[
+SCP STORAGE
+a simple storage to export images via scp
+AUTHOR
+Jérémy Rosen (jeremy.rosen@enst-bretagne.fr)
+INSTALLATION
+* copy this file in $CONFIGDIR/lua/ where CONFIGDIR
+is your darktable configuration directory
+* add the following line in the file $CONFIGDIR/luarc
+ require "scp-storage"
+USAGE
+* select "Export via SCP" in the storage selection menu
+* set the target directory
+* export your images
+LICENSE
+GPLv2
+]]
+darktable = require "darktable"
+darktable.configuration.check_version(...,{2,0,0})
+local scp_path = darktable.new_widget("entry"){
+ tooltip ="Complete path to copy to. Can include user and hostname",
+ text = "",
+ reset_callback = function(self) self.text = "" end
+}
+darktable.register_storage("scp_export","Export via scp",
+ function( storage, image, format, filename,
+ number, total, high_quality, extra_data)
+ if coroutine.yield("RUN_COMMAND","scp "..filename.." "..
+ scp_path.text
+ ) then
+ darktable.print_error("scp failed for "..tostring(image))
+ end
+ end,
+ nil, --finalize
+ nil, --supported
+ nil, --initialize
+ darktable.new_widget("box") {
+ orientation ="horizontal",
+ darktable.new_widget("label"){label = "target SCP PATH "},
+ scp_path,
+})
+</pre>
+<p> </p>
+<p>darktable will look for scripts (following the normal lua rules) in the standard directories plus <code>$CONFIGDIR/lua/?.lua</code> . So our script can be called by simply adding <code>require "scp-storage"</code> in the <span><em>luarc</em></span> file. A couple of extra notes...</p>
+<div>
+<ul>
+<li>
+<p>The function <code>darktable.configuration.check_version</code> will check compatibility for you. The <code>...</code> will turn into your script's name and <code>{2,0,0}</code>is the API version you have tested your script with. You can add multiple API versions if you update your script for multiple versions of darktable.</p>
+</li>
+<li>
+<p>Make sure to declare all your functions as <code>local</code> to not pollute the general namespace.</p>
+</li>
+<li>
+<p>Make sure you do not leave debug prints in your code.<code>darktable.print_error</code> in particular allows you to leave debug prints in your final code without disturbing the console.</p>
+</li>
+<li>
+<p>You are free to choose any license for your script but scripts that are uploaded on darktable's website need to be GPLv2.</p>
+</li>
+</ul>
+</div>
+<p>Once you have filled all the fields, checked your code, you can upload it to our script page <a href="https://darktable.org/redmine/projects/darktable/wiki/LuaScripts" target="_top">here</a>.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_810"><a name="lua_dbus"></a>9.1.8. Calling Lua from DBus</h3>
+</div>
+</div>
+</div>
+<p>It is possible to send a lua command to darktable via its DBus interface. The method<span><em>org.darktable.service.Remote.Lua</em></span> takes a single string parameter which is interpreted as a lua command. The command will be executed in the current lua context and should return either <span><em>nil</em></span> or a string. The result will be passed back as the result of the DBus method.</p>
+<p>If the Lua call results in an error, the DBus method call will return an error<span><em>org.darktable.Error.LuaError</em></span> with the lua error message as the message attached to the DBus error.</p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<h3 id="sigil_toc_id_811"><a name="lua_lib"></a>9.1.9. Using darktable from a lua script</h3>
+</div>
+</div>
+</div>
+<p><span><em>Warning: This feature is very experimental. It is known that several elements don't work in library mode yet. Careful testing is highly recommended.</em></span></p>
+<p>The lua interface allows you to use darktable from any lua script. This will load darktable as a library and provide you with most of the lua API (darktable is configured headless, so the functions related to the user interface are not available).</p>
+<p>As an example, the following program will print the list of all images in your library:</p>
+<p> </p>
+<pre>#!/usr/bin/env lua
+package = require "package"
+package.cpath=package.cpath..";./lib/darktable/lib?.so"
+dt = require("darktable")(
+"--library", "./library.db",
+"--datadir", "./share/darktable",
+"--moduledir", "./lib/darktable",
+"--configdir", "./configdir",
+"--cachedir","cachedir",
+"--g-fatal-warnings")
+require("darktable.debug")
+for k,v in ipairs(dt.database) do
+print(tostring(v))
+end
+</pre>
+<p> </p>
+<p>Note the third line that points to the location of the <code>libdarktable.so</code> file.</p>
+<p>Also note that the call to <code>require</code> returns a function that can be called only once and allows you to set darktable's command line parameter. The <code>:memory:</code>parameter to <code>--library</code> is useful here if you don't want to work on your personal library.</p>
+</div>
+<div>
+<div>
+<div>
+<h2 id="sigil_toc_id_813">9.2. Lua API</h2>
+</div>
+</div>
+</div>
+<p><a name="d0e15218"></a></p>
+<p>darktable's Lua API is documented in its own manual with a detailed description of all data structures and functions. You can download the API manual from <a href="https://www.darktable.org/resources/" target="_top">darktable's webpage</a>.</p>
+</body>
+</html>

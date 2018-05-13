@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+
+
+<link href="../Styles/Style0001.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<h1>Chapter 1. Overview</h1>
+<p>darktable is an open source photography workflow application and raw developer, a virtual lighttable and darkroom for photographers.</p>
+<p>It manages your digital negatives in a database, lets you view them through a zoomable lighttable and enables you to develop raw images and enhance them.</p>
+<div>
+<div>General Features</div>
+<ul>
+<li>
+<p>darktable runs on GNU/Linux / GTK3, Mac OS X / macports and Solaris 11 / GTK3.</p>
+</li>
+<li>
+<p>Fully non-destructive editing.</p>
+</li>
+<li>
+<p>All darktable core functions operate on 4x32-bit floating point pixel buffers for high accuracy processing, preventing banding and color breaks.</p>
+</li>
+<li>
+<p>darktable makes heavy use of&nbsp;<em>Streaming SIMD Extensions 2</em>&nbsp;(SSE2) instructions of the CPU to speed up processing. In fact, darktable requires either an SSE2-capable x86 processor or an ARM64 processor.</p>
+</li>
+<li>
+<p>GPU acceleration via OpenCL (runtime detection and enabling).</p>
+</li>
+<li>
+<p>Most image processing is done in CIELab color space, which is much larger than the gamut of modern displays, printers or even human vision.</p>
+</li>
+<li>
+<p>Full color managed display with softproofing and gamut-check. Built-in ICC profile support for export: sRGB, Adobe RGB, XYZ and linear RGB.</p>
+</li>
+<li>
+<p>A collect module allows you to execute flexible database queries, search your images by tags, image rating (stars), color labels and many more. Filtering and sorting your collections within the base query or simple tagging by related tags are useful tools in your every-day photo workflow.</p>
+</li>
+<li>
+<p>Import a variety of standard, raw and high dynamic range image formats (e.g. JPEG, CR2, DNG, OpenEXR, PFM, ...).</p>
+</li>
+<li>
+<p>darktable has a zero-latency fullscreen, zoomable user interface through multi-level software caches.</p>
+</li>
+<li>
+<p>Tethered shooting.</p>
+</li>
+<li>
+<p>The powerful export system supports Picasa webalbum, flickr upload, disk storage, 1:1 copy, email attachments and can generate a simple html-based web gallery. darktable allows you to export to low dynamic range (JPEG, JPEG2000, PNG, TIFF, PDF), 16-bit (PPM, TIFF), or linear high dynamic range (PFM, EXR) images.</p>
+</li>
+<li>
+<p>darktable uses both XMP sidecar files as well as its fast database for saving metadata and processing settings. All Exif data is read and written using libexiv2.</p>
+</li>
+<li>
+<p>darktable comes with more than 60 image operation modules which cover everything from basic operations, tonal value changes, color manipulation, correction of common image defects to artistic effects.</p>
+</li>
+<li>
+<p>Many darktable modules can be combined with blending operators for even more development options.</p>
+</li>
+<li>
+<p>A powerful mask feature gives you fine control on module's effect to different parts of an image. You can at your choice draw a mask using various shapes or define a parametric mask based on pixel values.</p>
+</li>
+<li>
+<p>Most modules can exist as multiple instances. Together with the mask feature, you can let an operation have different effects on different parts of the image.</p>
+</li>
+<li>
+<p>darktable introduces a highly efficient, yet simple&nbsp;“single-click”&nbsp;denoiser that always just works™. It's designed as a module where the denoising performance only depends on camera and ISO setting. A database of profiles contains parameters for well above 200 popular camera models.</p>
+</li>
+<li>
+<p>darktable comes with a versatile scripting interface for functionality enhancement using Lua as a scripting language.</p>
+</li>
+<li>
+<p>Images containing geo coordinates can be displayed on a map with various map sources at your choice. Geo coordinates can be assigned to images by manually placing them on the map, or by automatically applying GPX track data.</p>
+</li>
+<li>
+<p>darktable has a built-in slideshow feature that lets you display your collection of images fullscreen.</p>
+</li>
+<li>
+<p>A versatile print module lets you send your image to a connected printer with full color management support.</p>
+</li>
+</ul>
+</div>
+<h2 id="sigil_toc_id_1">1.1. Program invocation<br/></h2>
+<div><div>darktable comes with two main binaries: the standard GUI variant which is started by calling <code class="filename">darktable</code> and a command line interface variant which is started by calling <code class="filename">darktable-cli</code> . Additionally darktable is shipped with some further binaries for special purposes.</div>
+<h3 id="sigil_toc_id_2">1.1.1. <code class="filename">darktable</code> binary</h3>
+<div><div>This binary starts darktable with its GUI and full functionality; it is the standard way of using darktable.</div>
+<div><br/></div>
+<div><code class="filename">darktable</code> is called with the following command line parameters:</div>
+</div>
+<div><br/></div>
+<pre class="synopsis">darktable [-d {all,cache,camctl,camsupport,control,dev,
+               fswatch,input,lighttable,lua,masks,memory,nan,
+               opencl,perf,pwstorage,print,sql}]
+          [&lt;input file&gt;|&lt;image folder&gt;]
+          [--version]
+          [--disable-opencl]
+          [--library &lt;library file&gt;]
+          [--datadir &lt;data directory&gt;]
+          [--moduledir &lt;module directory&gt;]
+          [--tmpdir &lt;tmp directory&gt;]
+          [--configdir &lt;user config directory&gt;]
+          [--cachedir &lt;user cache directory&gt;]
+          [--localedir &lt;locale directory&gt;]
+          [--luacmd &lt;lua command&gt;]
+          [--noiseprofiles &lt;noiseprofiles json file&gt;]
+          [--conf &lt;key&gt;=&lt;value&gt;]</pre>
+</div>
+<dl>
+<dt>
+<p>All parameters are optional; in most cases users will start darktable without any additional parameters in which case darktable uses suitable defaults.</p>
+<div>
+<dl>
+<dt><span>-d</span></dt>
+<dd>
+<p>This option enables debug output to the terminal. There are several subsystems of darktable and debugging of each of them can be activated separately. You can use this option multiple times if you want debugging output of more than one subsystem.</p>
+</dd>
+<dt><span>&lt;input file&gt;|&lt;image folder&gt;</span></dt>
+<dd>
+<p>You may optionally supply the filename of an image or the name of a folder containing image files. If a filename is given darktable starts in darkroom view with that file opened. If a folder is given darktable starts in lighttable view with the content of that folder as the current collection.</p>
+</dd>
+<dt><span>--version</span></dt>
+<dd>
+<p>This option causes darktable to print its version number, a copyright notice, some other useful information, and then terminate.</p>
+</dd>
+<dt><span>--disable-opencl</span></dt>
+<dd>
+<p>This option prevents darktable from initializing the OpenCL subsystem. Use this option in case darktable crashes at startup due to a defective OpenCL implementation.</p>
+</dd>
+<dt><span>--library &lt;library file&gt;</span></dt>
+<dd>
+<p>darktable keeps image information in an sqlite database for fast access. The default location of that database file is <span>“<span>$HOME/.config/darktable/library.db</span>”</span>. You may give an alternative location, e.g. if you want to do some experiments without compromising your original library.db. If the database file does not exist, darktable creates it for you. You may also give <span>“<span>:memory:</span>”</span> as a library file in which case the database is kept in system memory – all changes are discarded when darktable terminates.</p>
+<p>Whenever darktable starts, it will lock the library to the current user. It does this by writing the current process identifier (PID) into a lock file <span>“<span>&lt;library file&gt;.lock</span>”</span>next to the library specified. If darktable finds an existing lock file for the library, it will terminate immediately.</p>
+</dd>
+<dt><span>--datadir &lt;data directory&gt;</span></dt>
+<dd>
+<p>This option defines the directory where darktable finds its runtime data. The default place depends on your installation. Typical places are<span>“<span>/opt/darktable/share/darktable/</span>”</span> and <span>“<span>/usr/share/darktable/</span>”</span>.</p>
+</dd>
+<dt><span>--moduledir &lt;module directory&gt;</span></dt>
+<dd>
+<p>darktable has a modular structure and organizes its modules as shared libraries for loading at runtime. With this option you tell darktable where to look for its shared libraries. The default place depends on your installation; typical places are <span>“<span>/opt/darktable/lib64/darktable/</span>”</span> and <span>“<span>/usr/lib64/darktable/</span>”</span>.</p>
+</dd>
+<dt><span>--tmpdir &lt;tmp directory&gt;</span></dt>
+<dd>
+<p>The place where darktable stores its temporary files. If this option is not supplied darktable uses the system default.</p>
+</dd>
+<dt><span>--configdir &lt;config directory&gt;</span></dt>
+<dd>
+<p>This option defines the directory where darktable stores the user specific configuration. The default place is <span>“<span>$HOME/.config/darktable/</span>”</span>.</p>
+</dd>
+<dt><span>--cachedir &lt;cache directory&gt;</span></dt>
+<dd>
+<p>darktable keeps a cache of image thumbnails for fast image preview and of precompiled OpenCL binaries for fast startup. By default the cache is located in<span>“<span>$HOME/.cache/darktable/</span>”</span>. There may exist multiple thumbnail caches in parallel – one for each library file.</p>
+</dd>
+<dt><span>--localedir &lt;locale directory&gt;</span></dt>
+<dd>
+<p>The place where darktable finds its language specific text strings. The default place depends on your installation. Typical places are<span>“<span>/opt/darktable/share/locale/</span>”</span> and <span>“<span>/usr/share/locale/</span>”</span>.</p>
+</dd>
+<dt><span>--luacmd &lt;lua command&gt;</span></dt>
+<dd>
+<p>A string containing lua commands to execute after lua initialization. These commands will be run after your <span>“<span>luarc</span>”</span> file.</p>
+<p>If lua is not compiled in, this option will be accepted but won't do anything.</p>
+</dd>
+<dt><span>--noiseprofiles &lt;noiseprofiles json file&gt;</span></dt>
+<dd>
+<p>The json file that contains the camera specific noise profiles. The default location depends on your installation. Typical places are<span>“<span>/opt/darktable/share/darktable/noiseprofile.json</span>”</span> and<span>“<span>/usr/share/darktable/noiseprofile.json</span>”</span>.</p>
+</dd>
+<dt><span>--conf &lt;key&gt;=&lt;value&gt;</span></dt>
+<dd>
+<p>darktable supports a rich set of configuration parameters which the user defines in <span>“<span>darktablerc</span>”</span> – darktable's configuration file in the user config directory. You may temporarily overwrite individual settings on the command line with this option – however, these settings will not be stored in <span>“<span>darktablerc</span>”</span>.</p>
+</dd>
+</dl>
+</div>
+</dt>
+</dl>
+<h3 id="sigil_toc_id_4">1.1.2. <code class="filename">darktable-cli</code> binary<br/></h3>
+<div><div>This binary starts the command line interface variant of darktable which allows exporting images.</div>
+<div><br/></div>
+<div>This variant does not open any display, so it will work in pure console mode without using any X11, wayland, etc. – this mode is useful for servers running background jobs.</div>
+<div><br/></div>
+<div><code class="filename">darktable-cli</code> is called with the following command line parameters:</div>
+</div>
+<pre class="synopsis">darktable-cli &lt;input file&gt;|&lt;image folder&gt;
+              [&lt;xmp file&gt;]
+              &lt;output file&gt;
+              [--width &lt;max width&gt;]
+              [--height &lt;max height&gt;]
+              [--bpp &lt;bpp&gt;]
+              [--hq &lt;0|1|true|false&gt;]
+              [--verbose]
+              [--core &lt;darktable options&gt;]</pre>
+<div>The user needs to supply an input filename and an output filename. All other parameters are optional.<br/></div>
+<dl><dt>
+<div>
+<dl>
+<dt><span>&lt;input file&gt;</span></dt>
+<dd>
+<p>The name of the input file to export or the name of an folder containing input images which are to be exported.</p>
+</dd>
+<dt><span>&lt;xmp file&gt;</span></dt>
+<dd>
+<p>The optional name of an XMP sidecar file containing the history stack data to be applied during export. If this option is not given darktable will search for an XMP file that belongs to the given input file(s).</p>
+</dd>
+<dt><span>&lt;output file&gt;</span></dt>
+<dd>
+<p>The name of the output file. darktable derives the export file format from the file extension. You can also use all the variables available in darktable's export module in the output filename (see <a title="2.3.12. Export selected" href="../Text/lighttable.xhtml#sigil_toc_id_3">Section 2.3.12, “Export selected”</a>). For obvious reasons this is mandatory if you use the program on an image folder containing multiple images.</p>
+</dd>
+<dt><span>--width &lt;max width&gt;</span></dt>
+<dd>
+<p>This optional parameter allows to limit the width of the exported image to that number of pixels.</p>
+</dd>
+<dt><span>--height &lt;max height&gt;</span></dt>
+<dd>
+<p>This optional parameter allows to limit the height of the exported image to that number of pixels.</p>
+</dd>
+<dt><span>--bpp &lt;bpp&gt;</span></dt>
+<dd>
+<p>An optional parameter to define the bit depth of the exported image; allowed values depend on the file format. Currently this option is not yet functional. If you need to define the bit depth you need to use the following workaround:</p>
+<pre>--core
+--conf plugins/imageio/format/&lt;FORMAT&gt;/bpp=&lt;VALUE&gt;</pre>
+<p>where &lt;FORMAT&gt; is the name of the selected output format.</p>
+</dd>
+<dt><span>--hq &lt;0|1|true|false&gt;</span></dt>
+<dd>
+<p>A flag that defines whether to use high quality resampling during export (see&nbsp;<a title="8.2. Core options" href="../Text/preferences.xhtml#sigil_toc_id_5">Section 8.2, “Core options”</a>). Defaults to true.</p>
+</dd>
+<dt><span>--verbose</span></dt>
+<dd>
+<p>Enables verbose output.</p>
+</dd>
+<dt><span>--core &lt;darktable options&gt;</span></dt>
+<dd>
+<p>All command line parameters following <span>“<span>--core</span>”</span> are passed to the darktable core and handled as standard parameters. See <a title="1.1.1. darktable binary" href="#sigil_toc_id_2">Section 1.1.1, “<code>darktable</code> binary”</a>&nbsp;for a detailed description.</p>
+</dd>
+</dl>
+</div>
+</dt>
+</dl>
+<h3 id="sigil_toc_id_6">1.1.3. <code class="filename">darktable-generate-cache</code> binary<br/></h3>
+<div><div>This binary updates darktable's thumbnail cache. You can start this program to generate all missing thumbnails in the background when your computer is idle.</div>
+<div><br/></div>
+<div><code class="filename">darktable-generate-cache</code> is called with the following command line parameters:</div>
+</div>
+<div><br/></div>
+<pre class="synopsis">darktable-generate-cache
+              [-h, --help]
+              [--version]
+              [--min-mip &lt;0-7&gt;] [-m, --max-mip &lt;0 - 7&gt;]
+              [--min-imgid &lt;N&gt;] [--max-imgid &lt;N&gt;]
+              [--core &lt;darktable options&gt;]</pre>
+<div>All parameters are optional. If started without parameters <code class="filename">darktable-generate-cache</code> uses reasonable defaults.<br/></div>
+<dl><dt>
+<div>
+<dl>
+<dt><span>-h, --help</span></dt>
+<dd>
+<p>Gives usage information and terminates.</p>
+</dd>
+<dt><span>--version</span></dt>
+<dd>
+<p>Gives copyright and version information and terminates.</p>
+</dd>
+<dt><span>--min-mip &lt;0 - 7&gt;, </span><span>-m, --max-mip &lt;0 - 7&gt;</span></dt>
+<dd>
+<p>darktable can handle and store thumbnails with up to eight different resolution steps for each image. These parameters define which maximum resolution should be generated and default to a range of 0-2. There is normally no need to generate all possible resolutions here; missing ones will be automatically generated by darktable the moment they are needed. When asked to generate multiple resolutions at once, the lower-resolution images are quickly downsampled from the highest-resolution image.</p>
+</dd>
+<dt><span>--min-imgid &lt;N&gt;, </span><span>--max-imgid &lt;N&gt;</span></dt>
+<dd>
+<p>Specifies the range of internal image IDs from the database to work on. If no range is given, darktable-generate-cache will process all images from the entire collection.</p>
+</dd>
+<dt><span>--core &lt;darktable options&gt;</span></dt>
+<dd>
+<p>All command line parameters following <span>“<span>--core</span>”</span> are passed to the darktable core and handled as standard parameters. See <a title="1.1.1. darktable binary" href="#sigil_toc_id_2">Section 1.1.1, “<code>darktable</code> binary”</a>&nbsp;for a detailed description.</p>
+</dd>
+</dl>
+</div>
+</dt>
+</dl>
+<div><h3 id="sigil_toc_id_7">1.1.4. <code class="filename">darktable-chart</code> binary</h3>
+<div>This binary is a dedicated utility to create styles out of pairs of images such as RAW+JPEG with in-camera processing. Details about its usage can be found in&nbsp;<a href="../Text/special_topics.xhtml#sigil_toc_id_8">Section 10.3, “Using <code class="filename">darktable-chart</code> ”</a>.</div>
+<div><br/></div>
+<div><code class="filename">darktable-chart</code> either starts a GUI or is used as a command-line program.</div>
+</div>
+<div><br/></div>
+<pre class="synopsis">darktable-chart
+              [--help]
+              [&lt;input Lab pfm file&gt;]
+              [&lt;cht file&gt;]
+              [&lt;reference cgats/it8 or Lab pfm file&gt;]</pre>
+<div>All parameters are optional, however, if you want to supply the second file name you also need to supply the first one etc. Starting <code class="filename">darktable-chart</code> this way opens a special GUI (details can be found in&nbsp;<a href="../Text/special_topics.xhtml#sigil_toc_id_8">Section 10.3, “Using darktable-chart ”</a>).</div>
+<dl>
+<dt><span>--help</span></dt>
+<dd>
+<p>Gives usage information and terminates.</p>
+</dd>
+<dt><span>&lt;input Lab pfm file&gt;</span></dt>
+<dd>
+<p>Opens the utility with the given file as source image. The input file needs to be in Lab Portable Float Map format.</p>
+</dd>
+<dt><span>&lt;cht file&gt;</span></dt>
+<dd>
+<p>Specifies a chart file describing the layout of the used color reference chart.</p>
+</dd>
+<dt><span>&lt;reference cgats/it8 or Lab pfm file&gt;</span></dt>
+<dd>
+<p>Specifies the reference values, either as measured values according to the CGATS standard, or as a reference image in Lab Portable Float Map format.</p>
+</dd>
+<dt>
+<p> </p>
+</dt>
+</dl>
+<div>Alternatively <code class="filename">darktable-chart</code> can be used as a command line program to generate darktable style files out of previously saved CSV files.<br/></div>
+<div><br/></div>
+<pre class="synopsis">darktable-chart
+              --csv
+              &lt;csv file&gt;
+              &lt;number patches&gt;
+              &lt;output dtstyle file&gt;</pre>
+<div>All parameters are mandatory.<br/></div>
+<dl><dt>
+<div>
+<dl>
+<dt><span>&lt;csv file&gt;</span></dt>
+<dd>
+<p>A CSV file previously saved from within <code class="filename">darktable-chart</code>.</p>
+</dd>
+<dt><span>&lt;number patches&gt;</span></dt>
+<dd>
+<p>The number of color patches to be used in the <span><em>color look up table</em></span> settings of the created style.</p>
+</dd>
+<dt><span>&lt;output dtstyle file&gt;</span></dt>
+<dd>
+<p>The name of the style file to be created.</p>
+</dd>
+</dl>
+</div>
+</dt>
+</dl>
+<div><h3 id="sigil_toc_id_9">1.1.5. <code class="filename">darktable-cltest</code> binary</h3>
+<div>This binary checks if there is a usable OpenCL environment on your system that darktable can use. It emits some debug output that is equivalent to calling “darktable -d opencl” and then terminates.</div>
+<div><br/></div>
+<div><code class="filename">darktable-cltest</code> is called without command line parameters:</div>
+<div><br/></div>
+<pre class="synopsis">darktable-cltest</pre>
+<h3 id="sigil_toc_id_10">1.1.6. <code class="filename">darktable-cmstest</code> binary</h3>
+<div>This binary investigates if the color management subsystem of your computer is correctly configured and it displays some useful information about the installed monitor profile(s).</div>
+<div><br/></div>
+<div><code class="filename">darktable-cmstest</code> is called without command line parameters:</div>
+<div><br/></div>
+<pre class="synopsis">darktable-cmstest</pre>
+</div>
+<h2 id="sigil_toc_id_11">1.2. User interface<br/></h2>
+<div>This section describes the layout of the user interface.<br/></div>
+<div><br/></div>
+<div><img alt="lighttable_view" src="../Images/lighttable_view.jpg" class="center"/><br/></div>
+<div><h3 id="sigil_toc_id_12">1.2.1. Views</h3>
+<div>darktable consists of several views or modes. There are five available views as described in this section. You can switch between views by clicking the view name at the top of the right panel – the active view is highlighted – or by using one of the key accelerators:</div>
+</div>
+<div><br/></div>
+<dl>
+<dt>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td><span><em>l</em></span></td>
+<td>switches to lighttable</td>
+</tr>
+<tr>
+<td><span><em>d</em></span></td>
+<td>switches to darkroom</td>
+</tr>
+<tr>
+<td><span><em>t</em></span></td>
+<td>switches to camera tethering</td>
+</tr>
+<tr>
+<td><span><em>m</em></span></td>
+<td>switches to map</td>
+</tr>
+<tr>
+<td><span><em>s</em></span></td>
+<td>switches to slideshow</td>
+</tr>
+<tr>
+<td><span><em>p</em></span></td>
+<td>switches to print</td>
+</tr>
+</tbody>
+</table>
+</dt>
+</dl>
+<div><h4 id="sigil_toc_id_13">1.2.1.1. Lighttable</h4>
+<div>The lighttable view is where images and film rolls are managed. It's also where you rate images, add tags and colorlabels, and export images among other actions (see&nbsp;<a href="../Text/lighttable.xhtml">Chapter 2, Lighttable</a>).</div>
+</div>
+<div><h4 id="sigil_toc_id_14">1.2.1.2. Darkroom</h4>
+<div>In the darkroom view you develop a single image using the available modules (see&nbsp;<a href="../Text/darkroom.xhtml">Chapter 3, Darkroom</a>).</div>
+<h4 id="sigil_toc_id_15">1.2.1.3. Tethering</h4>
+<div>This view is for shooting with the camera connected to the computer and remotely capturing images that will be downloaded and shown on computer screen (see&nbsp;<a href="../Text/tethering.xhtml">Chapter 4, Tethering</a>).</div>
+<h4 id="sigil_toc_id_16">1.2.1.4. Map</h4>
+<div>This view shows images with geo-tag data on a map and allows manually geo-tagging new images (see&nbsp;<a href="../Text/map.xhtml">Chapter 5, Map</a>).</div>
+<h4 id="sigil_toc_id_17">1.2.1.5. Slideshow</h4>
+<div>This view shows images as a slideshow, processing them on-the-fly (see&nbsp;<a href="../Text/slideshow.xhtml">Chapter 6, Slideshow</a>).</div>
+<h4 id="sigil_toc_id_18">1.2.1.6. Print</h4>
+<div>This view allows you to send images to your printer (see&nbsp;<a href="../Text/print.xhtml">Chapter 7, Print</a>).</div>
+</div>
+<div><h3 id="sigil_toc_id_19">1.2.2. Screen layout</h3>
+<div>The general screen layout of all views is similar. There is a center area which contains most of the relevant information of that view. Then there are panels left, right, top and bottom to the center area. The left panel typically has an informational purpose. The right panel offers functions to modify an image. The top and bottom panel give access to several settings and shortcuts. Each of the panels can be collapsed or expanded by pressing a triangle like&nbsp;<img alt="general_icon_collapse" src="../Images/general_icon_collapse.jpg" width="2%"/>, located close to the panel.</div>
+<div><br/></div>
+<div>By pressing the <span style="font-style: italic;">TAB</span> key all panels get collapsed, allowing the center area to occupy all available space. Pressing <span style="font-style: italic;">TAB</span> again brings you back to the previous view.</div>
+<div><br/></div>
+<div>Fullscreen view can be toggled by pressing<span style="font-style: italic;"> F11</span>.</div>
+<div><h3 id="sigil_toc_id_20">1.2.3. Filmstrip</h3>
+<div>The filmstrip along the bottom shows the same images as lighttable, with respect to filters and sort order. It is turned on/off with key accelerator <span style="font-style: italic;">ctrl-f</span>. You can navigate along the filmstrip by scrolling with the mouse wheel and change the height of the filmstrip panel by dragging its top. The filmstrip allows you to interact with images while you are not in lighttable mode. For example, you can, while developing an image in darkroom mode, switch to another image to develop, by double clicking the thumbnail in the filmstrip. You can also rate the images as you do in lighttable, copy/paste history stack, etc.</div>
+</div>
+</div>
+<div><br/></div>
+<div><img alt="filmstrip" src="../Images/filmstrip.jpg" class="center"/><br/></div>
+<div><h3 id="sigil_toc_id_21">1.2.4. Preferences</h3>
+<div>A button&nbsp;<img alt="darkroom_preferences" src="../Images/darkroom_preferences.jpg" width="2%"/>&nbsp;located in the upper panel allows you to define various parameters which control darktable's behavior.</div>
+<div><br/></div>
+<div>The options are fairly self-explanatory. If you need more information, hover the mouse cursor over the text label or entry box, to display a popup tool-tip. All configuration parameters are explained in&nbsp;<a href="../Text/preferences.xhtml">Chapter 8, Preferences and settings</a>.</div>
+</div>
+<div><h2 id="sigil_toc_id_22">1.3. darktable basic workflow</h2>
+<div>This section describes a typical darktable workflow which novice users may take as a starting point. We describe how to get an image into darktable, the basic steps of a raw development workflow and how to export the final result.</div>
+<h3 id="sigil_toc_id_23">1.3.1. Importing images</h3>
+<div>To begin with darktable, you first need to import images. The import module is in the left panel of the lighttable view (<a href="../Text/lighttable.xhtml#sigil_toc_id_26">Section 2.3.1, “Import”</a>). You can either import from the filesystem or, if darktable supports your camera model, directly from camera.</div>
+<h4 id="sigil_toc_id_24">1.3.1.1. Importing images from filesystem</h4>
+<div>When importing from disk, you can import either a single image or a folder. darktable will analyse its content, detect images that are already imported and only import new images.</div>
+<h4 id="sigil_toc_id_25">1.3.1.2. Importing from camera</h4>
+<div>Connect your camera to your system. If your distribution tries to automount it, select the option to abort the mount operation. Otherwise the camera will be locked and not accessible from within darktable. If you don't see your camera in the import module, hit the “scan for devices” button. Your camera will then appear in the same module with additional choices: <span style="font-style: italic;">import and tethering</span>.</div>
+</div>
+<h3 id="sigil_toc_id_27">1.3.2. Basic development steps<br/></h3>
+<h4 id="sigil_toc_id_28">1.3.2.1. Introduction<br/></h4>
+<div><div>This section will guide you through the basics of developing an image in the darkroom view.</div>
+<div><br/></div>
+<div>To begin, open an image in darkroom mode by double clicking an image thumbnail on the lighttable. The darkroom mode is where the actual adjustments for an image are made, where an arsenal of modules are at hand to help you reach your goal.</div>
+<div><br/></div>
+<div>Each change made on a module while developing an image is turned into a&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_29"><i>history stack</i></a>&nbsp;item. The history is stored in a database and in an XMP sidecar file for the specific image.</div>
+<div><br/></div>
+<div>All changes are stored automatically when you switch images or go from one darktable view to another. You can safely leave darkroom mode or quit darktable at any time and come back later to continue your work. That said darktable does not need a “save” button and it does not have one.</div>
+<div><br/></div>
+<div>On the left panel in darkroom mode is the&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_29"><i>history stack</i></a>, showing changes starting from bottom, and building up with each change made to the image. You can select a point in this history to show how the image looked at that point, for comparison of changes. The stack can be compressed: it will be optimized and redundant changes will be discarded. When you think you are done and are happy with what you have done, just compress the history stack.</div>
+<div><br/></div>
+<div>darktable ships with a number of modules, arranged into groups. These module groups are accessed via toggle buttons in the right panel, just under the histogram. There are also two special module groups named “active” and “favorites”, which only show modules enabled in the history for the current image, and modules selected as a favorite, respectively. Marking a module as a favorite is done in the <i>more modules</i> dialog (<a href="../Text/darkroom.xhtml#sigil_toc_id_30">Section 3.3.8, “More modules”</a>), at the bottom of the right panel, by clicking a module until a star is displayed in front of the icon.</div>
+</div>
+<h4 id="sigil_toc_id_31">1.3.2.2. White balance<br/></h4>
+<div>The&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_32"><i>white balance</i></a>&nbsp;module controls the white balance or color temperature of the image. It's always enabled and reads its default values from camera metadata embedded in the image. The most common change is fine-tuning the white balance, which is done using the “temperature” slider. Moving this slider left will make the color balance cooler, and moving it right will make it warmer.<br/></div>
+<div><h4 id="sigil_toc_id_33">1.3.2.3. Exposure correction</h4>
+<div>The&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_34"><i>exposure</i></a>&nbsp;module is probably the most basic module of them all. Exposure is fine-tuned either by using the slider, or by dragging with the mouse in the&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_35"><i>histogram</i></a>. You can also boost the black level to enhance contrast; but be careful: use small amounts, like steps of 0.005. There is also an auto-correct feature.</div>
+<h4 id="sigil_toc_id_36">1.3.2.4. Noise reduction<br/></h4>
+<div>The best starting point for noise reduction is&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_37"><i>profiled denoise</i></a>. This module offers an almost “single-click” solution to fight noise. From a user perspective the effect only depends on camera type and ISO value, both derived from Exif data. All other settings are taken from a database of noise profiles that the darktable team has collected – now covering well above 200 popular camera models. In addition you have several other options in darktable to reduce noise. There is&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_41"><i>raw denoise</i></a>,&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_40"><i>denoising based on bilateral filter</i></a>,&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_39"><i>denoising based on non-local means</i></a>, and&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_38"><i>equalizer</i></a>, which is based on wavelets. If your camera is not yet supported by&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_37"><i>profiled denoise</i></a>,&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_39"><i>denoising based on non-local means</i></a>&nbsp;is probably the most convenient, as it allows you to treat color and luminance noise separately.</div>
+<h4 id="sigil_toc_id_42">1.3.2.5. Fixing spots</h4>
+<div>Sometimes you will need to remove spots caused by sensor dirt. The<i>&nbsp;</i><a href="../Text/darkroom.xhtml#sigil_toc_id_43"><i>spot removal</i>&nbsp;</a>module is at hand and can also correct other disturbing elements like skin blemishes. If your camera has stuck pixels or tends to produce hot pixels at high ISO values or longer exposure times, have a look at the&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_44"><i>hot pixels</i></a>&nbsp;module for automatic correction.</div>
+<h4 id="sigil_toc_id_45">1.3.2.6. Geometrical corrections</h4>
+<div>Quite frequently you want to only show part of the captured scene in your image, e.g. to take away some disturbing feature close to the frame. In other cases, the horizon in the image may need levelling, or there are perspective distortions. All this can be corrected with full manual control in the&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_46"><i>crop and rotate</i></a>&nbsp;module. For a fully automatic correction of perspective distortions you may alternatively visit the&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_47"><i>perspective correction</i></a>&nbsp;module. If you need to correct typical camera lens flaws like cushion distortion, transversal chromatic aberrations or vignetting, there is a<i>&nbsp;</i><a href="../Text/darkroom.xhtml#sigil_toc_id_48"><i>lens correction</i>&nbsp;</a>module.</div>
+<h4 id="sigil_toc_id_49">1.3.2.7. Bringing back detail</h4>
+<div>Digital raw images often contain more information than you can see at first sight. Especially in the shadows of an image, there are lots of hidden details. The&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_50"><i>shadows and highlights</i></a>&nbsp;module helps bring these details back into visible tonal values. Structural details in fully blown-out highlights, by nature of the digital sensor, can not be recovered. However, you can correct unfavorable color casts in these areas with the&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_52"><i>highlight reconstruction</i></a>&nbsp;module. Additionally the&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_51"><i>color reconstruction</i></a>&nbsp;module is able to fill overexposed areas with suitable colors based on their surroundings.</div>
+<h4 id="sigil_toc_id_53">1.3.2.8. Adjusting tonal values<br/></h4>
+<div>Almost every workflow is likely to include adjusting the image's tonal range. darktable offers several alternative modules to take care of that. The most basic one is the&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_54"><i>contrast brightness saturation</i></a>&nbsp;module. In the&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_56"><i>tone curve</i></a>&nbsp;module, tonal values are adjusted by constructing a gradient curve. The&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_55"><i>levels</i></a>&nbsp;module offers a concise interface, with three markers in a histogram. In addition, there is a<i>&nbsp;</i><a href="../Text/darkroom.xhtml#sigil_toc_id_57"><i>zone system</i>&nbsp;</a>module which allows control over tonal values by zones, inspired by the work of&nbsp;<a href="http://anseladams.com/ansel-adams-bio/">Ansel Adams</a>.</div>
+<h4 id="sigil_toc_id_58">1.3.2.9. Enhancing local contrast</h4>
+<div>Local contrast enhancement can emphasize detail and clarity in your image. Carefully used, it can give your photograph the right pop. darktable offers several modules for this task. The&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_59"><i>local contrast</i></a>&nbsp;module is easy to handle, with just a few parameters. A much more versatile, but also more complex, technique is offered by the<i>&nbsp;</i><a href="../Text/darkroom.xhtml#sigil_toc_id_38"><i>equalizer</i>&nbsp;</a>module. Have a look at its presets, to get a feeling for how it works. Equalizer is darktable's "Swiss Army Knife" for many adjustments where spatial dimension plays a role.</div>
+<h4 id="sigil_toc_id_60">1.3.2.10. Color adjustments</h4>
+<div>darktable offers many modules for adjusting colors in an image. A very straightforward technique is implemented in the&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_62"><i>color correction</i></a>&nbsp;module. Use it to give an image an overall tint or to adjust overall color saturation. The&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_64"><i>color zones</i></a>&nbsp;module offers a much finer control to adjust saturation, or lightness, and even hue, in user defined zones. darktable's&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_56"><i>tone curve</i></a>&nbsp;module – in addition to the classical adjustment of tonal values – gives you fine control over the colors in an image. Finally, if you intend to convert an image into black &amp; white, a good starting point, with an easy to use and intuitive user interface, is offered by the&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_63"><i>monochrome</i></a>&nbsp;module. Alternatively, you might consider using darktable's&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_61"><i>channel mixer</i></a>.</div>
+<h4 id="sigil_toc_id_65">1.3.2.11. Sharpening</h4>
+<div>If you start your workflow from a raw image, you will need to have your final output sharpened. The&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_66"><i>sharpen</i></a>&nbsp;module can do this with the classical USM (unsharp mask) approach, available in most image processing software. Another very versatile way to enhance edges in an image is offered by the&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_67"><i>highpass</i></a>&nbsp;module, in combination with darktable's rich set of blending operators.</div>
+<h4 id="sigil_toc_id_68">1.3.2.12. Artistic effects</h4>
+<div>darktable comes with a rich set of artistic effect modules. To name just a few: with the&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_69"><i>watermark</i></a>&nbsp;module you add an individual watermark to your image. The <a href="../Text/darkroom.xhtml#sigil_toc_id_70"><i>grain</i></a> module simulates the typical noise of classical analogue footage. Use the&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_72"><i>color mapping</i></a>&nbsp;module to transfer the look and feel of one color image onto another. darktable's&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_71"><i>low light</i></a>&nbsp;module allows to simulate human vision to make lowlight pictures look closer to reality. The&nbsp;<a href="../Text/darkroom.xhtml#sigil_toc_id_73"><i>graduated density</i></a>&nbsp;filter adds a neutral or colored gradient to your image for exposure and color correction.</div>
+<h3 id="sigil_toc_id_74">1.3.3. Exporting images<br/></h3>
+<div><div>Changes to an image are not saved as in a regular image editor. darktable is a non-destructive editor, which means all changes are stored in a database, and the original image is untouched. Therefore, you need to export images to bake the processing options into an output file that can be distributed outside of darktable.</div>
+<div><br/></div>
+<div>Images are exported from the lighttable view, using the <i>export selected</i> dialog in the right panel (<a href="../Text/lighttable.xhtml#sigil_toc_id_3">Section 2.3.12, “Export selected”</a>). In general, export means: save my developed raw image as a JPEG.</div>
+<div><br/></div>
+<div>The export is modularized into <i>storage</i> and <i>format</i>. darktable ships with several storage modules such as <i>save on disk</i>, various webalbums, a LaTeX photo book template and more. Format modules are the actual image formats such as JPEG, PNG, TIFF, OpenEXR and more.</div>
+<div><br/></div>
+<div>Select images on the lighttable, choose the target storage and format, and set the maximum width and height image restraints. This means that none of the images will be bigger than any of the width/height restraints and hit the export button. Leave the width and height restraints at zero if you want the original resolution.</div>
+</div>
+</div>
+</body>
+</html>
